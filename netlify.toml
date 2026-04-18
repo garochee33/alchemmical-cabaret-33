@@ -8,6 +8,19 @@
   status = 200
   force = true
 
+
+[[redirects]]
+  from = "/api/verify-portal"
+  to = "/.netlify/functions/verify-portal"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/verify-admin"
+  to = "/.netlify/functions/verify-admin"
+  status = 200
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
