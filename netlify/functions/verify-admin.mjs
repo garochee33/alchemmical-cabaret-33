@@ -7,8 +7,8 @@ function parseAllowedOrigins() {
   const parts = raw.split(',').map((s) => s.trim()).filter(Boolean);
   if (parts.length) return parts;
   return [
-    'https://illuminaexperience.com',
-    'https://www.illuminaexperience.com',
+    'https://illuminexperience.com',
+    'https://www.illuminexperience.com',
     'https://alchemmical-cabaret-33.netlify.app',
   ];
 }

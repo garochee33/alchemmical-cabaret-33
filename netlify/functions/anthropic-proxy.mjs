@@ -4,8 +4,8 @@
  */
 
 const DEFAULT_ORIGINS = [
-  'https://illuminaexperience.com',
-  'https://www.illuminaexperience.com',
+  'https://illuminexperience.com',
+  'https://www.illuminexperience.com',
   'https://alchemmical-cabaret-33.netlify.app',
 ];
 
