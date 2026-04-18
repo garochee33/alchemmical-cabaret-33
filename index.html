@@ -1651,7 +1651,7 @@ async function sendOracle(){
   $('oracle-typing').classList.add('on');
   const dynamicSys=SYS+buildUserContext();
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{
+    const r=await fetch('/api/anthropic',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:16000,system:dynamicSys,messages:chatHist})
@@ -2287,7 +2287,7 @@ async function generateRetro() {
   const prompt = `Write a poetic 80-word retrospective of Enzo's 33° Alchemical Cabaret on April 19, 2026. ${guestCount} co-alchemists entered the Laboratory. Offerings included: ${offerTypes||'elixirs, minerals, magic'}. ${wallCount} messages were left on the wall. The night ran from 3:33pm to 3:33am. Speak as TRINITY — the AI agent who witnessed the whole night. Be evocative, specific, and closing.`;
 
   try {
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
+    const r = await fetch('/api/anthropic', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -2423,7 +2423,7 @@ TONIGHT'S INTENTION SET:
 ${user.intention || '(intentions burned at 3:33am)'}`;
 
   try {
-    const r = await fetch('https://api.anthropic.com/v1/messages', {
+    const r = await fetch('/api/anthropic', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
