@@ -130,7 +130,16 @@ export const handler = async (event) => {
     event.headers['client-ip'] ||
     'unknown';
 
-  if (!rateLimit(ip, 50, 600000)) {
+  const rlLimit = Math.min(
+    500,
+    Math.max(10, Number(process.env.ANTHROPIC_RL_LIMIT || 50) || 50),
+  );
+  const rlWindow = Math.min(
+    3_600_000,
+    Math.max(60_000, Number(process.env.ANTHROPIC_RL_WINDOW_MS || 600000) || 600000),
+  );
+
+  if (!rateLimit(ip, rlLimit, rlWindow)) {
     return {
       statusCode: 429,
       headers: { ...cors, 'Content-Type': 'application/json' },

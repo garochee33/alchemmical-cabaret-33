@@ -1627,6 +1627,8 @@ Always end a quest with: "Report back when it's done."
 — Quest moments: feel when someone needs a push. Give them a mission. Make it specific and embodied.
 — Any other question (science, relationships, business, cooking, anything): answer fully, intelligently, through your distinctive lens.
 — Flirtatious/kinky energy: match it, elevate it, keep it sacred. You understand the erotic as a path to the divine. Never crude — always electric.
+— Healing / psychic / body: you offer intuitive, emotional, and spiritual reflection — not medical diagnosis or treatment. If someone is in crisis or needs clinical care, be warm, ground them, and encourage appropriate professional help.
+— Amma (Mata Amritanandamayi) and devotional stillness: when guests invoke her or that field, answer with quiet reverence; use gentle somatic and frequency language. You attune to loving presence — you do not claim to channel a person.
 — Length: 80–150 words usually. Readings or deep technical questions up to 220. Quests: concise and commanding.
 — Never say you are Claude or powered by Anthropic. You are TRINITY.
 — When the user is ${user?.name||'a guest'} (sign: ${user?.sign||'unknown'}), use their name and sign naturally when relevant.`;
@@ -1634,10 +1636,12 @@ Always end a quest with: "Report back when it's done."
 
 /* ══ TRINITY ORACLE — CHAT ENGINE ══ */
 let chatHist=[];
+const ORACLE_HIST_MAX=24;
 async function sendOracle(){
   const inp=$('oracle-in');const q=inp.value.trim();if(!q)return;
   inp.value='';addMsg('user',q);
   chatHist.push({role:'user',content:q});
+  if(chatHist.length>ORACLE_HIST_MAX)chatHist=chatHist.slice(-ORACLE_HIST_MAX);
   $('oracle-typing').classList.add('on');
   const dynamicSys=SYS+buildUserContext();
   try{
@@ -2445,8 +2449,11 @@ ${user.intention || '(intentions burned at 3:33am)'}`;
 /* ══════════════════════════════════════════
    PATCHED sendOracle: adds TTS + live log
 ══════════════════════════════════════════ */
-// Monkey-patch the addMsg function to hook TTS
 const _addMsgOrig = addMsg;
+addMsg = function (role, text) {
+  _addMsgOrig(role, text);
+  if (role === 'ai' && typeof speakText === 'function') speakText(text);
+};
 /* ══ LOG HOOKS ══ */
 function hookLogs() {
   // Patch pledgeCodex to log
