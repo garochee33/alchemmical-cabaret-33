@@ -22,8 +22,9 @@ const ALLOWED_MODELS = new Set([
 const MAX_BODY = 280000;
 const MAX_MESSAGES = 48;
 const MAX_MSG_CHARS = 120000;
-const MAX_TOKENS_CAP = 8192;
+const MAX_TOKENS_CAP = 4096;
 const DEFAULT_MODEL = 'claude-sonnet-4-6';
+const RATE_MAP_MAX = 20000;
 
 function parseAllowedOrigins() {
   const raw = process.env.ALLOWED_ORIGINS || '';
@@ -50,7 +51,7 @@ function corsHeaders(origin) {
   const allow = isOriginAllowed(o);
   const h = {
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Headers': 'Content-Type, X-Trinity-Session',
     Vary: 'Origin',
   };
   if (allow) h['Access-Control-Allow-Origin'] = o;
@@ -58,15 +59,28 @@ function corsHeaders(origin) {
 }
 
 const rate = new Map();
-function rateLimit(ip, limit, windowMs) {
+function rateLimit(bucketKey, limit, windowMs) {
   const now = Date.now();
-  let e = rate.get(ip);
+  if (rate.size > RATE_MAP_MAX) {
+    for (const [k, v] of rate) if (now > v.reset) rate.delete(k);
+    if (rate.size > RATE_MAP_MAX) rate.clear();
+  }
+  let e = rate.get(bucketKey);
   if (!e || now > e.reset) {
     e = { n: 0, reset: now + windowMs };
-    rate.set(ip, e);
+    rate.set(bucketKey, e);
   }
   e.n += 1;
   return e.n <= limit;
+}
+
+function bucketFor(event, ip) {
+  const sid = String(
+    event.headers['x-trinity-session'] || event.headers['X-Trinity-Session'] || '',
+  )
+    .replace(/[^a-zA-Z0-9_-]/g, '')
+    .slice(0, 64);
+  return sid ? `${ip}|${sid}` : ip;
 }
 
 function sanitizePayload(parsed) {
@@ -139,11 +153,31 @@ export const handler = async (event) => {
     Math.max(60_000, Number(process.env.ANTHROPIC_RL_WINDOW_MS || 600000) || 600000),
   );
 
-  if (!rateLimit(ip, rlLimit, rlWindow)) {
+  if (!rateLimit(bucketFor(event, ip), rlLimit, rlWindow)) {
     return {
       statusCode: 429,
-      headers: { ...cors, 'Content-Type': 'application/json' },
+      headers: {
+        ...cors,
+        'Content-Type': 'application/json',
+        'Retry-After': String(Math.ceil(rlWindow / 1000)),
+      },
       body: JSON.stringify({ error: 'Too many requests. Please wait a few minutes.' }),
+    };
+  }
+
+  const ipCeil = Math.min(
+    50000,
+    Math.max(rlLimit, Number(process.env.ANTHROPIC_IP_CEIL || rlLimit * 50) || rlLimit * 50),
+  );
+  if (!rateLimit(`ip:${ip}`, ipCeil, rlWindow)) {
+    return {
+      statusCode: 429,
+      headers: {
+        ...cors,
+        'Content-Type': 'application/json',
+        'Retry-After': String(Math.ceil(rlWindow / 1000)),
+      },
+      body: JSON.stringify({ error: 'Traffic from this network is temporarily throttled.' }),
     };
   }
 
@@ -202,12 +236,15 @@ export const handler = async (event) => {
   });
 
   const text = await upstream.text();
+  const outHeaders = {
+    ...cors,
+    'Content-Type': upstream.headers.get('content-type') || 'application/json',
+  };
+  const retryAfter = upstream.headers.get('retry-after');
+  if (retryAfter) outHeaders['Retry-After'] = retryAfter;
   return {
     statusCode: upstream.status,
-    headers: {
-      ...cors,
-      'Content-Type': upstream.headers.get('content-type') || 'application/json',
-    },
+    headers: outHeaders,
     body: text,
   };
 };

@@ -1008,6 +1008,15 @@ function saveSched(){localStorage.setItem('33_sched',JSON.stringify(schedRsvp));
 function saveWatchers(){localStorage.setItem('33_watchers',JSON.stringify(watcherLog));}
 function saveMem(k,v){trinityMem[k]=v;localStorage.setItem('trinity_mem',JSON.stringify(trinityMem));}
 
+/* ══ TRINITY SESSION ID (per-device, stable) ══ */
+let trinitySid=localStorage.getItem('33_sid');
+if(!trinitySid){
+  try{trinitySid=(crypto.randomUUID?crypto.randomUUID():(Date.now().toString(36)+Math.random().toString(36).slice(2,10))).replace(/[^a-zA-Z0-9_-]/g,'').slice(0,32);}
+  catch{trinitySid=(Date.now().toString(36)+Math.random().toString(36).slice(2,10));}
+  localStorage.setItem('33_sid',trinitySid);
+}
+function trinityHeaders(){return {'Content-Type':'application/json','X-Trinity-Session':trinitySid};}
+
 /* ══ COUNTDOWN ══ */
 const UNLOCK=new Date('2026-04-19T03:33:00');
 function tick(){
@@ -1040,7 +1049,7 @@ function tryPw(){
   const v=$('pw-in').value.toLowerCase().trim();
   if(!v){$('pw-err').textContent='Speak the word...';return;}
   $('pw-err').textContent='';
-  fetch('/api/verify-portal',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:v})})
+  fetch('/api/verify-portal',{method:'POST',headers:trinityHeaders(),body:JSON.stringify({code:v})})
   .then(r=>r.json().then(d=>{
     if(r.ok&&d.ok){goOnboard();}
     else{$('pw-err').textContent=(d&&d.error)||'The veil does not part...';$('pw-in').value='';setTimeout(()=>$('pw-err').textContent='',2200);}
@@ -1647,10 +1656,13 @@ async function sendOracle(){
   try{
     const r=await fetch('/api/anthropic',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:8192,system:dynamicSys,messages:chatHist})
+      headers:trinityHeaders(),
+      body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:1024,system:dynamicSys,messages:chatHist})
     });
-    if(!r.ok)throw new Error('API '+r.status);
+    if(!r.ok){
+      if(r.status===429){addMsg('ai','Many guests are speaking with me at once. Breathe \u2014 try again in a moment.');$('oracle-typing').classList.remove('on');return;}
+      throw new Error('API '+r.status);
+    }
     const d=await r.json();
     const reply=d.content?.[0]?.text||'The signal fades... try again.';
     chatHist.push({role:'assistant',content:reply});
@@ -1677,7 +1689,7 @@ let adminFilter='all',adminUnlocked=false;
 function checkAdmin(){
   const pw=$('admin-pw').value.trim();
   if(!pw){toast('Enter password');return;}
-  fetch('/api/verify-admin',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:pw})})
+  fetch('/api/verify-admin',{method:'POST',headers:trinityHeaders(),body:JSON.stringify({password:pw})})
   .then(r=>r.json().then(d=>{
     if(r.ok&&d.ok){
       $('admin-gate').classList.add('hidden');
@@ -2289,7 +2301,7 @@ async function generateRetro() {
   try {
     const r = await fetch('/api/anthropic', {
       method: 'POST',
-      headers: {'Content-Type': 'application/json'},
+      headers: trinityHeaders(),
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
         max_tokens: 300,
@@ -2425,7 +2437,7 @@ ${user.intention || '(intentions burned at 3:33am)'}`;
   try {
     const r = await fetch('/api/anthropic', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: trinityHeaders(),
       body: JSON.stringify({
         model: 'claude-sonnet-4-6',
         max_tokens: 600,
