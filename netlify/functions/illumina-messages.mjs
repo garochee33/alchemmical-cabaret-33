@@ -2,10 +2,19 @@
  * Illumina oracle — Anthropic Messages API proxy (key stays in Netlify env).
  * Same contract as POST /api/experience/illumina-messages on trinity-consortium.
  */
-/** Per-edge-instance throttle; limits runaway clients during traffic spikes (not a global quota). */
+/**
+ * Per-edge-instance throttle. Prefer X-Illumina-Client (UUID) so venue WiFi / NAT
+ * does not collapse hundreds of guests into one IP bucket.
+ */
 const RATE_LIMIT_WINDOW_MS = 60_000;
-const RATE_LIMIT_MAX_POSTS = 48;
+/** Per distinct browser session (UUID from client). */
+const RATE_LIMIT_MAX_PER_CLIENT = 36;
+/** When no client id (curl, older cached HTML): still allow bursts from one IP. */
+const RATE_LIMIT_MAX_PER_IP_ONLY = 180;
 const rateBuckets = new Map();
+
+const CLIENT_UUID_RE =
+  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 function clientIp(event) {
   const xf = event.headers['x-forwarded-for'] || event.headers['X-Forwarded-For'] || '';
@@ -15,18 +24,25 @@ function clientIp(event) {
   return (alt && String(alt).trim()) || 'unknown';
 }
 
-function rateLimitAllow(ip) {
+function rateLimitKey(event) {
+  const raw = event.headers['x-illumina-client'] || event.headers['X-Illumina-Client'] || '';
+  const cid = String(raw).trim();
+  if (CLIENT_UUID_RE.test(cid)) return { key: `c:${cid}`, max: RATE_LIMIT_MAX_PER_CLIENT };
+  return { key: `i:${clientIp(event)}`, max: RATE_LIMIT_MAX_PER_IP_ONLY };
+}
+
+function rateLimitAllow(bucketKey, maxPosts) {
   const now = Date.now();
   for (const [key, entry] of rateBuckets) {
     if (entry.resetAt <= now) rateBuckets.delete(key);
   }
-  let entry = rateBuckets.get(ip);
+  let entry = rateBuckets.get(bucketKey);
   if (!entry || entry.resetAt <= now) {
     entry = { count: 0, resetAt: now + RATE_LIMIT_WINDOW_MS };
-    rateBuckets.set(ip, entry);
+    rateBuckets.set(bucketKey, entry);
   }
   entry.count += 1;
-  return entry.count <= RATE_LIMIT_MAX_POSTS;
+  return entry.count <= maxPosts;
 }
 
 const ALLOWED_ORIGINS = new Set([
@@ -35,6 +51,28 @@ const ALLOWED_ORIGINS = new Set([
   'https://illuminaexperience.com',
   'https://www.illuminaexperience.com',
 ]);
+
+function extraOracleHostnames() {
+  return String(process.env.ILLUMINA_ORACLE_EXTRA_HOSTS || '')
+    .split(',')
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
+}
+
+function hostnameAllowed(host) {
+  const h = String(host || '').toLowerCase();
+  if (!h) return false;
+  if (h.endsWith('.netlify.app')) return true;
+  if (extraOracleHostnames().includes(h)) return true;
+  for (const o of ALLOWED_ORIGINS) {
+    try {
+      if (new URL(o).hostname === h) return true;
+    } catch {
+      /* ignore */
+    }
+  }
+  return false;
+}
 
 const ALLOWED_MODELS = new Set([
   'claude-sonnet-4-20250514',
@@ -46,12 +84,17 @@ const ANTHROPIC_URL = 'https://api.anthropic.com/v1/messages';
 
 function isAllowedCaller(origin, referer) {
   const o = (origin || '').trim();
-  if (o && ALLOWED_ORIGINS.has(o)) return true;
+  if (o) {
+    try {
+      if (hostnameAllowed(new URL(o).hostname)) return true;
+    } catch {
+      /* ignore */
+    }
+  }
   const r = (referer || '').trim();
   if (!r) return false;
   try {
-    const u = new URL(r);
-    return ALLOWED_ORIGINS.has(`${u.protocol}//${u.host}`);
+    return hostnameAllowed(new URL(r).hostname);
   } catch {
     return false;
   }
@@ -59,10 +102,17 @@ function isAllowedCaller(origin, referer) {
 
 function corsHeaders(origin) {
   const o = (origin || '').trim();
-  const allow = o && ALLOWED_ORIGINS.has(o) ? o : 'https://illuminaexperince.com';
+  let allow = 'https://illuminaexperince.com';
+  if (o) {
+    try {
+      if (hostnameAllowed(new URL(o).hostname)) allow = o;
+    } catch {
+      /* keep default */
+    }
+  }
   return {
     'Access-Control-Allow-Origin': allow,
-    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Headers': 'Content-Type, X-Illumina-Client',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
     'Cache-Control': 'no-store',
   };
@@ -108,8 +158,8 @@ export const handler = async (event) => {
     };
   }
 
-  const ip = clientIp(event);
-  if (!rateLimitAllow(ip)) {
+  const { key: rlKey, max: rlMax } = rateLimitKey(event);
+  if (!rateLimitAllow(rlKey, rlMax)) {
     return {
       statusCode: 429,
       headers: {

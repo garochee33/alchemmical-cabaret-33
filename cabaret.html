@@ -7,7 +7,7 @@
 <meta name="application-name" content="Illumina Experience">
 <meta property="og:site_name" content="Illumina Experience · Illumina Tribe">
 <meta property="og:title" content="33° Alchemical Cabaret · The Grand Sextile · April 19, 2026">
-<meta property="og:description" content="The Grand Sextile · Illumina Experience">
+<meta property="og:description" content="Enzo turns 33 · April 19, 2026 · doors 3:33pm Eastern — summoned as co-alchemists. Cipher 33. The Grand Sextile · Illumina Experience">
 <meta property="og:url" content="https://illuminaexperince.com/cabaret">
 <meta name="twitter:card" content="summary">
 <link rel="canonical" href="https://illuminaexperince.com/cabaret">
@@ -153,7 +153,32 @@ body {
   letter-spacing: 0.5em;
   color: var(--gold-dim);
   text-transform: uppercase;
-  margin-bottom: 3rem;
+  margin-bottom: 1.25rem;
+}
+
+.hero-gate-status {
+  max-width: 36rem;
+  margin: 0 auto 1.5rem;
+  padding: 0 0.5rem;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  font-style: italic;
+  line-height: 1.65;
+  color: rgba(245,234,214,0.92);
+}
+
+.hero-summons {
+  max-width: 32rem;
+  margin: 0 auto 2.5rem;
+  padding: 0 1rem;
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  line-height: 1.75;
+  color: rgba(245,234,214,0.88);
+}
+.hero-summons strong {
+  color: var(--gold);
+  font-weight: 600;
 }
 
 .hero-astro {
@@ -188,6 +213,38 @@ body {
   color: var(--gold-dim);
   text-transform: uppercase;
 }
+.hero-quick-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.45rem 1.1rem;
+  max-width: 38rem;
+  margin: 1.35rem auto 0;
+  padding: 0 0.5rem;
+}
+.hero-quick-nav a {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,168,76,0.35);
+  padding-bottom: 0.12rem;
+}
+.hero-quick-nav a:hover { color: var(--parchment); border-bottom-color: var(--gold); }
+.codex-examples { margin-top: 0.4rem; }
+.codex-examples > summary {
+  font-family: 'Cinzel', serif;
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+  cursor: pointer;
+  list-style: none;
+}
+.codex-examples > summary::-webkit-details-marker { display: none; }
+
 
 .scroll-hint {
   position: absolute;
@@ -827,10 +884,22 @@ footer {
 
   <!-- HERO -->
   <section id="hero">
-    <div class="hero-eyebrow">A private summons · 33rd degree ascension</div>
+    <div class="hero-eyebrow">33° · Alchemical Cabaret</div>
     <div class="hero-degree">33°</div>
     <div class="hero-title">Alchemical Cabaret</div>
     <div class="hero-subtitle">The Grand Sextile Activation · Five planets at 4°</div>
+
+    <p class="hero-gate-status" id="hero-gate-status" role="status">Venue doors <strong>3:33pm</strong> ET · Apr 19 · North Miami.</p>
+    <p class="hero-summons">Co-alchemist · one ingredient · cipher <strong>33</strong>.</p>
+    <nav class="hero-quick-nav" aria-label="Jump to">
+      <a href="#chart-section">Chart</a>
+      <a href="#codex-section">Codex</a>
+      <a href="#oracle-section">Oracle</a>
+      <a href="#schedule-section">Programme</a>
+      <a href="#rsvp-section">RSVP</a>
+      <a href="/spore">Spore</a>
+      <a id="hero-trinity-lab" href="https://trinity-consortium.com">Kommunity</a>
+    </nav>
 
     <div class="hero-astro">
       <span class="astro-pill">☽ Moon · 4° Libra</span>
@@ -840,18 +909,18 @@ footer {
       <span class="astro-pill">♇ Pluto · 4° Aquarius</span>
     </div>
 
-    <div class="hero-date">Sunday, April 19 · 2026 · 3:33pm → 3:33am · The Great Work</div>
-    <div class="hero-location">The Laboratory · North Miami · Dress as your highest alchemical self</div>
+    <div class="hero-date">Apr 19, 2026 · 3:33pm → 3:33am ET</div>
+    <div class="hero-location">North Miami · gold / ritual glam · rideshare</div>
 
-    <div class="scroll-hint">↓ enter the grimoire</div>
+    <div class="scroll-hint">More below</div>
   </section>
 
   <!-- BIRTH CHART -->
   <section id="chart-section">
     <div class="section">
       <div class="sect-label">The cosmos conspired</div>
-      <div class="sect-title">Your natal chart meets the Grand Sextile</div>
-      <p class="sect-body">Born April 19, 1993 in Paris — Aries sun, Pisces moon, Aquarius rising. Three of the five alignment planets speak directly to your three natal placements simultaneously on this day.</p>
+      <div class="sect-title">Chart + alignment</div>
+      <p class="sect-body">Aries sun · Pisces moon · Aquarius rising · April 19, 1993 · Paris. Five planets at 4° — details in the wheel and table.</p>
 
       <div class="chart-grid" style="margin-top:2.5rem;">
         <div>
@@ -890,7 +959,7 @@ footer {
           </ul>
           <div style="margin-top:1.5rem;padding:1.2rem;border:1px solid rgba(201,168,76,0.1);background:rgba(201,168,76,0.03);">
             <div style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.3em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:0.6rem;">The triangle</div>
-            <p style="font-size:0.9rem;color:rgba(245,234,214,0.9);line-height:1.7;font-style:italic;">Your twin sisters — Pisces sun, Aries moon — carry what you hold beneath: the same elements, inversely distributed. On April 19 the alignment activates all three of you simultaneously.</p>
+            <p style="font-size:0.9rem;color:rgba(245,234,214,0.9);line-height:1.7;font-style:italic;">Twins: Pisces sun / Aries moon — mirror chart — all three lit this night.</p>
           </div>
         </div>
       </div>
@@ -955,8 +1024,8 @@ footer {
   <section id="codex-section">
     <div class="section">
       <div class="sect-label">The Alchemist's Codex</div>
-      <div class="sect-title">You are not a guest — you are a co-alchemist</div>
-      <p class="sect-body">The Great Work requires your ingredient. Bring one offering from the Codex. Click to transmute it into the collective cauldron and watch the Magnum Opus advance.</p>
+      <div class="sect-title">Pick one ingredient</div>
+      <p class="sect-body">Tap a card to pledge it. Open <strong>Ideas</strong> on each card if you want examples.</p>
 
       <div class="cauldron-wrap">
         <canvas id="cauldron-canvas" width="220" height="220"></canvas>
@@ -972,11 +1041,13 @@ footer {
           <span class="card-symbol">🜄</span>
           <span class="card-name">Elixirs · The Liquid Stone</span>
           <span class="card-tagline">Spirits, tonics & sacred drinks</span>
+          <details class="codex-examples" onclick="event.stopPropagation()"><summary>Ideas</summary>
           <div class="card-examples">
             <strong>Alcoholic:</strong> mezcal, wine, rum, absinthe, mead, craft cocktails<br>
             <strong>Healthy:</strong> golden milk, adaptogenic tonics, cacao elixir, kombucha, moon water, fresh juice<br>
             <strong>Pro tip:</strong> Label it with a handwritten intention. "Taurus Grounding Tonic." "Uranus Lightning Shot."
           </div>
+          </details>
           <div class="card-transmuted">✦ Transmuted into the Work ✦</div>
         </div>
 
@@ -984,11 +1055,13 @@ footer {
           <span class="card-symbol">⚗</span>
           <span class="card-name">Potions · Bottled Magic</span>
           <span class="card-tagline">Small-batch concentrated power</span>
+          <details class="codex-examples" onclick="event.stopPropagation()"><summary>Ideas</summary>
           <div class="card-examples">
             <strong>Sweet:</strong> raw honey, spiced syrup, chocolate truffles, caramel, halva<br>
             <strong>Savoury:</strong> hot sauce, pickles, chutney, fermented things, dips<br>
             <strong>Ritual:</strong> anointing oil, perfume, room spray, herbal tincture in a pretty jar
           </div>
+          </details>
           <div class="card-transmuted">✦ Transmuted into the Work ✦</div>
         </div>
 
@@ -996,12 +1069,14 @@ footer {
           <span class="card-symbol">✦</span>
           <span class="card-name">Magic · The Invisible Ingredient</span>
           <span class="card-tagline">Art, performance & living energy</span>
+          <details class="codex-examples" onclick="event.stopPropagation()"><summary>Ideas</summary>
           <div class="card-examples">
             <strong>Artists:</strong> bring a small painting, drawing, print, or found object as an altar piece<br>
             <strong>Musicians &amp; DJs:</strong> offer a 20-min set, live loop, or sonic ritual<br>
             <strong>Performers:</strong> song, poem, dance, burlesque, spoken word, fire poi, illusion — 5–7 min max<br>
             <strong>Writers:</strong> a sigil, poem, or written intention to burn at midnight
           </div>
+          </details>
           <div class="card-transmuted">✦ Transmuted into the Work ✦</div>
         </div>
 
@@ -1009,12 +1084,14 @@ footer {
           <span class="card-symbol">🜔</span>
           <span class="card-name">Minerals · The Earth Element</span>
           <span class="card-tagline">Grounding the fire into form</span>
+          <details class="codex-examples" onclick="event.stopPropagation()"><summary>Ideas</summary>
           <div class="card-examples">
             <strong>Crystals &amp; stones:</strong> any — even a pebble you love<br>
             <strong>Edible earth:</strong> sea salt, dried herbs, spices, edible flowers, cacao nibs<br>
             <strong>Food offerings:</strong> fresh fruit, cheese, bread, snack platters — anything nourishing<br>
             <strong>Shiny things:</strong> gold leaf, glitter, feathers, anything that catches candlelight
           </div>
+          </details>
           <div class="card-transmuted">✦ Transmuted into the Work ✦</div>
         </div>
 
@@ -1022,12 +1099,14 @@ footer {
           <span class="card-symbol">☽</span>
           <span class="card-name">Astral Offerings · The Celestial Ingredient</span>
           <span class="card-tagline">Tied to the sky we stand under</span>
+          <details class="codex-examples" onclick="event.stopPropagation()"><summary>Ideas</summary>
           <div class="card-examples">
             <strong>Sun sign element:</strong> Fire = red candle/spice · Earth = crystal/plant · Air = feather/incense · Water = shell/moon water<br>
             <strong>Uranus (4° Gemini):</strong> anything electric blue, metallic, or revolutionary<br>
             <strong>Jupiter (4° Leo):</strong> gold objects, sun imagery, creative works<br>
             <strong>Written:</strong> one sentence: what you ignite, what you liberate, what you embody
           </div>
+          </details>
           <div class="card-transmuted">✦ Transmuted into the Work ✦</div>
         </div>
 
@@ -1058,20 +1137,20 @@ footer {
   <!-- ORACLE -->
   <section id="oracle-section">
     <div class="section">
-      <div class="sect-label">The Alchemical Oracle · Powered by Claude</div>
-      <div class="sect-title">Ask the 33rd Degree</div>
-      <p class="sect-body">The Oracle speaks in the language of the Great Work — astrology, alchemy, the Magnum Opus. Ask about your birth chart, the alignment, the night's ritual, or your own unfolding.</p>
+      <div class="sect-label">Oracle · Claude</div>
+      <div class="sect-title">Ask the Oracle</div>
+      <p class="sect-body">Tonight, the chart, the alignment — type a short question.</p>
 
       <div class="oracle-shell" style="margin-top:2rem;">
         <div class="oracle-header">
           <div class="oracle-dot"></div>
-          <div class="oracle-header-title">Alchemical Oracle · 33rd Degree · Grand Sextile 2026</div>
+          <div class="oracle-header-title">Alchemical Oracle</div>
         </div>
 
         <div id="chat-log">
           <div class="msg ai">
             <div class="msg-avatar">⚗</div>
-            <div class="msg-bubble">The Work begins. Five planets lock at 4° — a cosmic click heard once in a generation. You stand at the Rubedo, the final reddening, where the Philosopher's Stone is realized not as an object but as the transformed self. What do you wish to know, co-alchemist?</div>
+            <div class="msg-bubble">What do you want to know?</div>
           </div>
         </div>
 
@@ -1083,18 +1162,18 @@ footer {
         </div>
 
         <div class="oracle-prompts">
-          <button class="oracle-prompt-btn" onclick="setPrompt('What does the Grand Sextile mean for my Aries sun on April 19?')">My Aries sun & the alignment</button>
-          <button class="oracle-prompt-btn" onclick="setPrompt('What rituals should I perform at midnight during the Rubedo?')">Midnight ritual guidance</button>
-          <button class="oracle-prompt-btn" onclick="setPrompt('How does Pluto in Aquarius transform my Aquarius rising?')">Pluto on my rising</button>
-          <button class="oracle-prompt-btn" onclick="setPrompt('What is the alchemical meaning of the 33rd degree?')">The 33rd degree</button>
-          <button class="oracle-prompt-btn" onclick="setPrompt('What should I bring as my offering to the Alchemical Cabaret?')">Choosing my offering</button>
+          <button class="oracle-prompt-btn" onclick="setPrompt('What does the Grand Sextile mean for my Aries sun on April 19?')">Aries sun + alignment</button>
+          <button class="oracle-prompt-btn" onclick="setPrompt('What rituals should I perform at midnight during the Rubedo?')">Midnight ritual</button>
+          <button class="oracle-prompt-btn" onclick="setPrompt('How does Pluto in Aquarius transform my Aquarius rising?')">Pluto + rising</button>
+          <button class="oracle-prompt-btn" onclick="setPrompt('What is the alchemical meaning of the 33rd degree?')">33rd degree</button>
+          <button class="oracle-prompt-btn" onclick="setPrompt('What should I bring as my offering to the Alchemical Cabaret?')">What to bring</button>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SCHEDULE -->
-  <section style="border-top:1px solid rgba(201,168,76,0.1);">
+  <section id="schedule-section" style="border-top:1px solid rgba(201,168,76,0.1);">
     <div class="section">
       <div class="sect-label">The night's arc</div>
       <div class="sect-title">The Magnum Opus unfolds in four stages</div>
@@ -1104,42 +1183,42 @@ footer {
           <div class="sched-time">2:00 pm</div>
           <div>
             <div class="sched-stage">Nigredo · The Blackening</div>
-            <div class="sched-desc">Arrival through the veil. Each guest crosses a threshold and whispers what they are leaving behind. Welcome elixirs at the Prima Materia station. The space is dark, the air heavy. Offerings placed on the central altar.</div>
+            <div class="sched-desc">Arrive · threshold · drinks · altar.</div>
           </div>
         </div>
         <div class="sched-item">
           <div class="sched-time">2–5 pm</div>
           <div>
             <div class="sched-stage">Albedo · The Purification</div>
-            <div class="sched-desc">Pool, hot tub, yoga, ping-pong, lounging. The Mercury Bath. Performances emerge organically in the cabana zones. Astral speed dating — share your sign, what you're transmuting. Collective altar fills with offerings.</div>
+            <div class="sched-desc">Pool · lounge · casual performances · altar grows.</div>
           </div>
         </div>
         <div class="sched-item">
           <div class="sched-time">5–6:30 pm</div>
           <div>
             <div class="sched-stage">Citrinitas · The Solar Hour</div>
-            <div class="sched-desc">Golden hour — lightning strikes. The Uranus Lightning Invocation. Circle gathers. Three forces called: Aries Fire, Uranus Liberation, Taurus Embodiment. Written intentions burned in the cauldron. Your twins light the central flame. The crowd is the transformer.</div>
+            <div class="sched-desc">Golden hour circle · intentions · central flame.</div>
           </div>
         </div>
         <div class="sched-item">
           <div class="sched-time">6:30–8 pm</div>
           <div>
             <div class="sched-stage">Community Vision · The Ecosystem Born</div>
-            <div class="sched-desc">The 5 Pillars revealed as Acts in the Grand Show. Breakout cabanas with gold tablecloths. Guests claim roles and sign the Transmutation Wall. The house becomes the ecosystem in real time.</div>
+            <div class="sched-desc">Five pillars as acts · wall · roles.</div>
           </div>
         </div>
         <div class="sched-item">
           <div class="sched-time">8 pm → late</div>
           <div>
             <div class="sched-stage">Rubedo · The Gold</div>
-            <div class="sched-desc">DJ takeover. The Banquet of the Stone. Live performances. Fire elements. Red lighting floods the space. The Philosopher's Stone is realized — not as an object but as the transformed people in this room.</div>
+            <div class="sched-desc">DJ · banquet · performances · late.</div>
           </div>
         </div>
         <div class="sched-item">
           <div class="sched-time">Midnight</div>
           <div>
             <div class="sched-stage">The 33° Toast</div>
-            <div class="sched-desc">33 candles. The adept speaks. What 33 years have built, what is completed, what is beginning. The crowd becomes the altar. So Mote It Be.</div>
+            <div class="sched-desc">33° toast · midnight.</div>
           </div>
         </div>
       </div>
@@ -1151,7 +1230,7 @@ footer {
     <div class="section">
       <div class="sect-label">The ecosystem launch</div>
       <div class="sect-title">Five Pillars of the New World</div>
-      <p class="sect-body">This night is also the official activation of the creator community. High-impact entrepreneurs, artists, builders. The house becomes the template.</p>
+      <p class="sect-body">Creator house · five rhythms for how we live and work together.</p>
 
       <div class="pillars-grid">
         <div class="pillar-card">
@@ -1188,7 +1267,7 @@ footer {
     <div class="section">
       <div class="sect-label">Claim your place in the Great Work</div>
       <div class="sect-title">Enter the Laboratory</div>
-      <p class="sect-body" style="margin:0 auto;">The portal opens only for the co-alchemists. Dress as your highest theatrical self — gold, feathers, velvet, sigils, lab coat over corset, top hat with occult markings. Whatever says: I transmuted.</p>
+      <p class="sect-body" style="margin:0 auto;"><strong>Co-alchemists</strong> only · dress loud in gold / velvet / ritual glam.</p>
 
       <div class="rsvp-form" id="rsvp-form">
         <div class="field-row">
@@ -1217,22 +1296,72 @@ footer {
 
   <footer>
     <div class="footer-sigil">☽ ⊕ ☉</div>
-    <div class="footer-text">Venue · 12746 NE 4th Ave · North Miami, FL<br><a class="footer-maps" href="https://www.google.com/maps/search/?api=1&amp;query=12746%20NE%204th%20Ave%2C%20North%20Miami%2C%20FL" target="_blank" rel="noopener noreferrer">Google Maps</a><br>So Mote It Be · 33° Alchemical Cabaret · The Grand Sextile · April 19 MMXXVI · The Night Everything Unfolds</div>
+    <div class="footer-text">Venue · 12746 NE 4th Ave · North Miami, FL<br><a class="footer-maps" href="https://www.google.com/maps/search/?api=1&amp;query=12746%20NE%204th%20Ave%2C%20North%20Miami%2C%20FL" target="_blank" rel="noopener noreferrer">Google Maps</a><br><a href="/spore">Spore</a> · <a id="cabaret-trinity-lab" href="https://trinity-consortium.com">Kommunity / Trinity</a><br>33° Alchemical Cabaret · Apr 19, 2026</div>
   </footer>
 
 </div><!-- /app -->
 
 <script>
-/** On illumina*.com use same-origin Netlify function (Anthropic key in Netlify); else Trinity API for local/dev. */
+/** Trinity portal (oracle + lab redirects target). Optional: deploy script replaces this line. */
+var TRINITY_LAB_ORIGIN = 'https://trinity-consortium.com';
+/** Same-origin Netlify function when this HTML is deployed with functions; Trinity API for local/file/trinity host. */
 var ILLUMINA_ORACLE_URL = (function () {
+  var proto = window.location.protocol;
   var h = (window.location.hostname || '').toLowerCase();
-  if (h === 'illuminaexperince.com' || h === 'www.illuminaexperince.com' || h === 'illuminaexperience.com' || h === 'www.illuminaexperience.com') {
-    return window.location.origin + '/.netlify/functions/illumina-messages';
+  var tri = (typeof TRINITY_LAB_ORIGIN === 'string' ? TRINITY_LAB_ORIGIN.trim().replace(/\/$/, '') : 'https://trinity-consortium.com') || 'https://trinity-consortium.com';
+  if (proto === 'file:' || h === 'localhost' || h === '127.0.0.1' || h === '[::1]') {
+    return tri + '/api/experience/illumina-messages';
   }
-  return 'https://trinity-consortium.com/api/experience/illumina-messages';
+  if (h === 'trinity-consortium.com' || h === 'www.trinity-consortium.com') {
+    return tri + '/api/experience/illumina-messages';
+  }
+  return window.location.origin + '/.netlify/functions/illumina-messages';
 })();
+(function () {
+  var t = typeof TRINITY_LAB_ORIGIN === 'string' ? TRINITY_LAB_ORIGIN.trim().replace(/\/$/, '') : '';
+  var el = document.getElementById('cabaret-trinity-lab');
+  if (t && el) el.href = t;
+  var h = document.getElementById('hero-trinity-lab');
+  if (t && h) h.href = t;
+})();
+(function updateHeroGateLine() {
+  var node = document.getElementById('hero-gate-status');
+  if (!node) return;
+  var portal = new Date('2026-04-19T03:33:00-04:00');
+  var doors = new Date('2026-04-19T15:33:00-04:00');
+  var dawn = new Date('2026-04-20T03:33:00-04:00');
+  var now = new Date();
+  if (now < portal) {
+    node.textContent = 'Online veil 3:33am ET · venue doors 3:33pm ET · Apr 19.';
+  } else if (now < doors) {
+    node.textContent = 'This page is live · venue opens 3:33pm ET.';
+  } else if (now < dawn) {
+    node.textContent = 'Venue open since 3:33pm ET · night in motion.';
+  } else {
+    node.textContent = 'Apr 19 circuit closed at dawn · cabaret + links stay up.';
+  }
+})();
+function getIlluminaOracleClientId() {
+  var k = 'illumina_oracle_client_v1';
+  try {
+    var id = localStorage.getItem(k);
+    if (id && /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id)) return id;
+    id = (typeof crypto !== 'undefined' && crypto.randomUUID) ? crypto.randomUUID() : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      var r = (Math.random() * 16) | 0;
+      var v = c === 'x' ? r : (r & 0x3) | 0x8;
+      return v.toString(16);
+    });
+    localStorage.setItem(k, id);
+    return id;
+  } catch (_) {
+    return '';
+  }
+}
 function illuminaOracleFetch(payload) {
-  return fetch(ILLUMINA_ORACLE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+  var headers = { 'Content-Type': 'application/json' };
+  var cid = getIlluminaOracleClientId();
+  if (cid) headers['X-Illumina-Client'] = cid;
+  return fetch(ILLUMINA_ORACLE_URL, { method: 'POST', headers: headers, body: JSON.stringify(payload) });
 }
 
 /* ── BACKGROUND CANVAS ── */

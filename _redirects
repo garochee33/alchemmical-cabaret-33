@@ -4,3 +4,6 @@
 /invite          /index.html        200
 /portal          /index.html        200
 /birthday        /index.html        200
+# Trinity lab (same short links on the invite domain → production app)
+/kommunity-chat/* https://trinity-consortium.com/kommunity-chat/:splat 302
+/spore            https://trinity-consortium.com/spore 302

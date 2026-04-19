@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#080604">
 <meta name="application-name" content="Enzo · 33rd birthday">
 <meta property="og:title" content="Enzo's 33rd · April 19, 2026">
-<meta property="og:description" content="Birthday invite — portal 3:33am · gates 3:33pm · North Miami. This link is your invite.">
+<meta property="og:description" content="Enzo turns 33 · April 19, 2026 — summoned as a co-alchemist. Cipher 33. Digital veil 3:33am ET · doors 3:33pm ET · North Miami.">
 <meta property="og:url" content="https://illuminaexperince.com/">
 <meta property="og:site_name" content="Illumina Experience">
 <meta name="twitter:card" content="summary">
@@ -96,36 +96,35 @@ ul.simple li {
   color: var(--parchment-muted);
 }
 ul.simple li:last-child { border-bottom: none; }
-.cd {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 1.5rem;
-  justify-content: center;
-  text-align: center;
-  margin: 1.5rem 0;
-}
-.cd span.n {
-  font-family: var(--ff-deco);
-  font-size: clamp(1.75rem, 6vw, 2.5rem);
-  color: var(--gold);
-  display: block;
-  line-height: 1;
-}
-.cd span.l {
-  font-family: var(--ff-ui);
-  font-size: 0.55rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--gold-dim);
-  margin-top: 0.35rem;
-  display: block;
-}
 .actions {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
   margin-top: 1rem;
 }
+.actions.lab-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+.actions.lab-actions .btn-wide {
+  grid-column: 1 / -1;
+}
+ul.lab-atelier {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+}
+ul.lab-atelier li {
+  padding: 0.42rem 0;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+  color: var(--parchment-muted);
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+ul.lab-atelier li:last-child { border-bottom: none; }
+ul.lab-atelier strong { color: var(--gold); font-weight: 600; }
 button, .btn-link {
   font-family: var(--ff-ui);
   font-size: 0.65rem;
@@ -190,90 +189,112 @@ footer a {
   <p class="kicker">Birthday · April 19, 2026 · Miami</p>
 
   <div class="card">
-    <p><strong>Enzo</strong> turns <strong>33</strong>. If you are reading this, you are part of the circle.</p>
-    <p><strong>April 19</strong> — online first, then in person. Dress: <strong>gold</strong>. Arrive by <strong>Uber or Lyft</strong> only (no on-site guest parking).</p>
+    <p><strong>Enzo</strong> · <strong>33</strong> · April 19 · Miami. Dress <strong>gold</strong>. You are a <strong>co-alchemist</strong> — bring one <strong>ingredient</strong>. Rideshare to the venue only.</p>
+    <p>Chart, Codex, Oracle, wall, programme: <a href="/cabaret" style="color:var(--gold-dim)">Open the cabaret</a> · cipher <strong>33</strong>.</p>
     <p class="sig">— Enzo</p>
   </div>
 
   <div class="card">
     <h2>At a glance</h2>
     <ul class="simple">
-      <li><strong>Digital portal</strong> — this page, opens <strong>3:33am</strong> Eastern</li>
-      <li><strong>Doors</strong> — <strong>3:33pm</strong> same day</li>
-      <li><strong>Address</strong> — North Miami Mansion, <strong>12746 NE 4th Ave</strong>, North Miami, FL</li>
-      <li><strong>Evening</strong> — golden-hour gathering around sunset; night runs toward <strong>3:33am</strong> on April 20</li>
+      <li id="gl-portal"><strong>This page</strong> — opens <strong>3:33am</strong> ET Apr 19</li>
+      <li id="gl-doors"><strong>Venue doors</strong> — <strong>3:33pm</strong> ET Apr 19</li>
+      <li><strong>Where</strong> — <strong>12746 NE 4th Ave</strong>, North Miami, FL</li>
+      <li><strong>Night</strong> — toward <strong>3:33am</strong> Apr 20 ET</li>
     </ul>
   </div>
 
   <div class="card" aria-live="polite">
-    <h2>Countdown to portal (3:33am)</h2>
-    <div class="cd" id="cd">
-      <div><span class="n" id="cd-d">0</span><span class="l">Days</span></div>
-      <div><span class="n" id="cd-h">0</span><span class="l">Hours</span></div>
-      <div><span class="n" id="cd-m">0</span><span class="l">Minutes</span></div>
-      <div><span class="n" id="cd-s">0</span><span class="l">Seconds</span></div>
+    <h2>Laboratory</h2>
+    <p class="hint" id="lab-gate-status" style="text-align:left;margin-top:0">Cipher <strong>33</strong>. Venue gates <strong>3:33pm</strong> ET · <strong>12746 NE 4th Ave</strong>.</p>
+    <p class="hint" id="lab-guest-hint" hidden style="text-align:left;margin-top:0.5rem;font-size:0.92rem">Guest room: tap below when the host enables it.</p>
+    <div class="actions lab-actions">
+      <a class="btn-link btn-wide" href="/cabaret">Cabaret</a>
+      <a class="btn-link" href="/cabaret#codex-section">Codex</a>
+      <a class="btn-link" href="/cabaret#oracle-section">Oracle</a>
+      <a class="btn-link" href="/spore">Spore</a>
+      <a class="btn-link" id="lab-trinity-portal" href="https://trinity-consortium.com">Kommunity</a>
+      <a class="btn-link btn-wide" id="lab-guest-room" href="#" target="_blank" rel="noopener noreferrer" hidden>Guest room</a>
     </div>
-    <p class="hint" id="cd-done" hidden>The portal time has passed — see you at the gates or in the thread.</p>
   </div>
 
   <div class="card">
-    <h2>Your invite link</h2>
-    <p style="font-size:1rem">Share this page. Short links work too: <strong>/invite</strong>, <strong>/portal</strong>, <strong>/birthday</strong></p>
+    <h2>Share</h2>
+    <p style="font-size:1rem">Copy URL · or <strong>/invite</strong> · <strong>/portal</strong></p>
     <div class="actions">
-      <button type="button" id="btn-copy">Copy invite link</button>
-      <a class="btn-link" id="btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=12746%20NE%204th%20Ave%2C%20North%20Miami%2C%20FL" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
-    </div>
-  </div>
-
-  <div class="card" id="kommunity-card" hidden>
-    <h2>Guest chat (optional)</h2>
-    <p>Before the portal opens, you can say hello here if the host enabled it.</p>
-    <div class="actions">
-      <a class="btn-link" id="kommunity-link" href="#" target="_blank" rel="noopener noreferrer">Open guest room</a>
+      <button type="button" id="btn-copy">Copy link</button>
+      <a class="btn-link" id="btn-maps" href="https://www.google.com/maps/search/?api=1&amp;query=12746%20NE%204th%20Ave%2C%20North%20Miami%2C%20FL" target="_blank" rel="noopener noreferrer">Maps</a>
     </div>
   </div>
 
   <footer>
-    <p>Full Laboratory portal (roster, TRINITY, programme, wall): <a href="/cabaret">33° alchemical cabaret</a>.</p>
-    <p style="margin-top:0.75rem;font-size:0.82rem">Illumina Experience · So mote it be</p>
+    <p style="margin-top:0;font-size:0.88rem;color:rgba(240,230,208,0.85)"><a href="/spore">Spore</a> · <a id="trinity-lab-foot" href="https://trinity-consortium.com">Trinity / Kommunity</a></p>
+    <p style="margin-top:0.75rem;font-size:0.82rem">Illumina Experience</p>
   </footer>
 </div>
 <div id="toast" role="status"></div>
 
 <script>
+/* Optional: Trinity portal origin — deploy script can replace (must match Netlify kommunity/spore redirects). */
+var TRINITY_LAB_ORIGIN = 'https://trinity-consortium.com';
 /* Optional: full kommunity.chat URL — deploy script can replace this line. */
 var KOMMUNITY_INVITE_URL = '';
 
 (function () {
   var PORTAL = new Date('2026-04-19T03:33:00-04:00');
+  var DOORS = new Date('2026-04-19T15:33:00-04:00');
+  var DAWN = new Date('2026-04-20T03:33:00-04:00');
 
-  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function refreshGlance(now) {
+    var gp = document.getElementById('gl-portal');
+    var gd = document.getElementById('gl-doors');
+    if (gp) {
+      if (now < PORTAL) {
+        gp.innerHTML = '<strong>This page</strong> — live <strong>3:33am</strong> ET Apr 19';
+      } else {
+        gp.innerHTML = '<strong>This page</strong> — <strong>open</strong>';
+      }
+    }
+    if (gd) {
+      if (now < DOORS) {
+        gd.innerHTML = '<strong>Venue</strong> — opens <strong>3:33pm</strong> ET Apr 19';
+      } else if (now < DAWN) {
+        gd.innerHTML = '<strong>Venue</strong> — <strong>open</strong>';
+      } else {
+        gd.innerHTML = '<strong>Venue</strong> — night ended; links still work';
+      }
+    }
+  }
+
+  function refreshLabGateStatus(now) {
+    var el = document.getElementById('lab-gate-status');
+    if (!el) return;
+    var msP = PORTAL.getTime() - now.getTime();
+    var msD = DOORS.getTime() - now.getTime();
+    var msDn = DAWN.getTime() - now.getTime();
+    if (msP > 0) {
+      el.innerHTML = 'This page <strong>3:33am</strong> ET · venue <strong>3:33pm</strong> · <strong>12746 NE 4th Ave</strong> · rideshare only.';
+    } else if (msD > 0) {
+      el.innerHTML = 'Cabaret is <strong>live</strong>. Venue opens <strong>3:33pm</strong> ET. Cipher <strong>33</strong>.';
+    } else if (msDn > 0) {
+      el.innerHTML = '<strong>Venue open</strong> · North Miami · Codex + Oracle + links on cabaret.';
+    } else {
+      el.innerHTML = 'Dawn closed the circuit · Spore + Kommunity stay on Trinity.';
+    }
+  }
 
   function tick() {
     var now = new Date();
-    var ms = PORTAL.getTime() - now.getTime();
-    var done = document.getElementById('cd-done');
-    var cd = document.getElementById('cd');
-    if (ms <= 0) {
-      if (cd) cd.hidden = true;
-      if (done) done.hidden = false;
-      return;
+    refreshGlance(now);
+    refreshLabGateStatus(now);
+
+    var kuTick = typeof KOMMUNITY_INVITE_URL === 'string' ? KOMMUNITY_INVITE_URL.trim() : '';
+    var hintGuest = document.getElementById('lab-guest-hint');
+    if (kuTick && hintGuest) {
+      hintGuest.textContent = now < PORTAL
+        ? 'Guest room: tap the button when the host enables it.'
+        : 'Guest room: tap below if enabled.';
     }
-    ms = Math.floor(ms / 1000);
-    var s = ms % 60;
-    ms = Math.floor(ms / 60);
-    var m = ms % 60;
-    ms = Math.floor(ms / 60);
-    var h = ms % 24;
-    var d = Math.floor(ms / 24);
-    var elD = document.getElementById('cd-d');
-    var elH = document.getElementById('cd-h');
-    var elM = document.getElementById('cd-m');
-    var elS = document.getElementById('cd-s');
-    if (elD) elD.textContent = pad(d);
-    if (elH) elH.textContent = pad(h);
-    if (elM) elM.textContent = pad(m);
-    if (elS) elS.textContent = pad(s);
   }
 
   function toast(msg) {
@@ -313,10 +334,21 @@ var KOMMUNITY_INVITE_URL = '';
 
   var ku = typeof KOMMUNITY_INVITE_URL === 'string' ? KOMMUNITY_INVITE_URL.trim() : '';
   if (ku) {
-    var card = document.getElementById('kommunity-card');
-    var link = document.getElementById('kommunity-link');
-    if (card) card.hidden = false;
-    if (link) link.href = ku;
+    var guestBtn = document.getElementById('lab-guest-room');
+    var guestHint = document.getElementById('lab-guest-hint');
+    if (guestBtn) {
+      guestBtn.hidden = false;
+      guestBtn.href = ku;
+    }
+    if (guestHint) guestHint.hidden = false;
+  }
+
+  var tlo = typeof TRINITY_LAB_ORIGIN === 'string' ? TRINITY_LAB_ORIGIN.trim().replace(/\/$/, '') : '';
+  if (tlo) {
+    var foot = document.getElementById('trinity-lab-foot');
+    if (foot) foot.href = tlo;
+    var labPortal = document.getElementById('lab-trinity-portal');
+    if (labPortal) labPortal.href = tlo;
   }
 
   document.getElementById('btn-copy').addEventListener('click', copyInvite);

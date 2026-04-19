@@ -1,8 +1,11 @@
-# Illumina Experience — static site (Netlify base dir: sites/illumina-experience)
-# Short HTML cache + stale-while-revalidate keeps the CDN friendly under traffic.
+# Illumina Experience — Netlify static site (prod: https://illuminaexperince.com/).
+# Not deployed on Hetzner. Slim mirror repo: https://github.com/garochee33/alchemmical-cabaret-33
+# In monorepo: base dir sites/illumina-experience. Short HTML cache + SWR for CDN traffic.
 #
 # Oracle (cabaret): set ANTHROPIC_API_KEY or ILLUMINA_ANTHROPIC_API_KEY in Netlify
 # → Site settings → Environment variables (used by netlify/functions/illumina-messages.mjs).
+# Custom domains (not illumina*.com / *.netlify.app): add comma-separated hostnames, e.g.
+#   ILLUMINA_ORACLE_EXTRA_HOSTS=www.yourbirthday.com,yourbirthday.com
 [build]
   publish = "."
   command = "echo \"Illumina: static publish root only\""
@@ -30,6 +33,16 @@
   from = "/birthday"
   to = "/index.html"
   status = 200
+
+[[redirects]]
+  from = "/kommunity-chat/*"
+  to = "https://trinity-consortium.com/kommunity-chat/:splat"
+  status = 302
+
+[[redirects]]
+  from = "/spore"
+  to = "https://trinity-consortium.com/spore"
+  status = 302
 
 [[headers]]
   for = "/*"
