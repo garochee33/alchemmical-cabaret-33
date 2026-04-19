@@ -33,20 +33,25 @@ function corsHeaders(origin) {
   const allow = isOriginAllowed(o);
   const h = {
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Headers': 'Content-Type, X-Trinity-Session',
     Vary: 'Origin',
   };
   if (allow) h['Access-Control-Allow-Origin'] = o;
   return h;
 }
 
+const RATE_MAP_MAX = 20000;
 const rate = new Map();
-function rateLimit(ip, limit, windowMs) {
+function rateLimit(bucketKey, limit, windowMs) {
   const now = Date.now();
-  let e = rate.get(ip);
+  if (rate.size > RATE_MAP_MAX) {
+    for (const [k, v] of rate) if (now > v.reset) rate.delete(k);
+    if (rate.size > RATE_MAP_MAX) rate.clear();
+  }
+  let e = rate.get(bucketKey);
   if (!e || now > e.reset) {
     e = { n: 0, reset: now + windowMs };
-    rate.set(ip, e);
+    rate.set(bucketKey, e);
   }
   e.n += 1;
   return e.n <= limit;
@@ -81,7 +86,7 @@ export const handler = async (event) => {
   if (!rateLimit(ip, 25, 900000)) {
     return {
       statusCode: 429,
-      headers: { ...cors, 'Content-Type': 'application/json' },
+      headers: { ...cors, 'Content-Type': 'application/json', 'Retry-After': '900' },
       body: JSON.stringify({ ok: false, error: 'Too many attempts' }),
     };
   }
