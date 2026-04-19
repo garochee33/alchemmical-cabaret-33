@@ -1,0 +1,6 @@
+# Pretty URLs for the static Illumina Experience site (publish root = this folder)
+/cabaret         /cabaret.html      200
+# Short birthday-invite paths (same portal; share-friendly)
+/invite          /index.html        200
+/portal          /index.html        200
+/birthday        /index.html        200

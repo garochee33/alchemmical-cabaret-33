@@ -1,25 +1,35 @@
+# Illumina Experience — static site (Netlify base dir: sites/illumina-experience)
+# Short HTML cache + stale-while-revalidate keeps the CDN friendly under traffic.
+#
+# Oracle (cabaret): set ANTHROPIC_API_KEY or ILLUMINA_ANTHROPIC_API_KEY in Netlify
+# → Site settings → Environment variables (used by netlify/functions/illumina-messages.mjs).
 [build]
   publish = "."
-  functions = "netlify/functions"
+  command = "echo \"Illumina: static publish root only\""
+
+[functions]
+  node_bundler = "esbuild"
+
+# Same rules as _redirects — declarative rewrites survive odd publish roots / merges.
+[[redirects]]
+  from = "/cabaret"
+  to = "/cabaret.html"
+  status = 200
 
 [[redirects]]
-  from = "/api/anthropic"
-  to = "/.netlify/functions/anthropic-proxy"
+  from = "/invite"
+  to = "/index.html"
   status = 200
-  force = true
-
 
 [[redirects]]
-  from = "/api/verify-portal"
-  to = "/.netlify/functions/verify-portal"
+  from = "/portal"
+  to = "/index.html"
   status = 200
-  force = true
 
 [[redirects]]
-  from = "/api/verify-admin"
-  to = "/.netlify/functions/verify-admin"
+  from = "/birthday"
+  to = "/index.html"
   status = 200
-  force = true
 
 [[headers]]
   for = "/*"
@@ -28,17 +38,62 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-[[headers]]
-  for = "/index.html"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate, stale-while-revalidate=60"
-
+# Root and index are the heavy HTML entrypoints — avoid no-cache so spikes do not
+# re-fetch the full document on every navigation.
 [[headers]]
   for = "/"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate, stale-while-revalidate=60"
+    Cache-Control = "public, max-age=60, s-maxage=120, stale-while-revalidate=86400, stale-if-error=86400"
 
 [[headers]]
-  for = "/api/*"
+  for = "/index.html"
   [headers.values]
-    Cache-Control = "no-store"
+    Cache-Control = "public, max-age=60, s-maxage=120, stale-while-revalidate=86400, stale-if-error=86400"
+
+# Birthday invite short URLs (rewrite to index.html in _redirects)
+[[headers]]
+  for = "/invite"
+  [headers.values]
+    Cache-Control = "public, max-age=60, s-maxage=120, stale-while-revalidate=86400, stale-if-error=86400"
+
+[[headers]]
+  for = "/portal"
+  [headers.values]
+    Cache-Control = "public, max-age=60, s-maxage=120, stale-while-revalidate=86400, stale-if-error=86400"
+
+[[headers]]
+  for = "/birthday"
+  [headers.values]
+    Cache-Control = "public, max-age=60, s-maxage=120, stale-while-revalidate=86400, stale-if-error=86400"
+
+[[headers]]
+  for = "/cabaret.html"
+  [headers.values]
+    Cache-Control = "public, max-age=300, s-maxage=600, stale-while-revalidate=86400, stale-if-error=86400"
+
+# Pretty URL from _redirects (200 rewrite) — match the browser path too.
+[[headers]]
+  for = "/cabaret"
+  [headers.values]
+    Cache-Control = "public, max-age=300, s-maxage=600, stale-while-revalidate=86400, stale-if-error=86400"
+
+# Binary/static assets (if added under publish root) — edge-friendly under viral traffic.
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800, stale-if-error=86400"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800, stale-if-error=86400"
+
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800, stale-if-error=86400"
+
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, s-maxage=604800, stale-while-revalidate=604800, stale-if-error=86400"

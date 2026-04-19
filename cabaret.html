@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=5">
+<meta name="theme-color" content="#0a0806">
+<meta name="application-name" content="Illumina Experience">
+<meta property="og:site_name" content="Illumina Experience · Illumina Tribe">
+<meta property="og:title" content="33° Alchemical Cabaret · The Grand Sextile · April 19, 2026">
+<meta property="og:description" content="The Grand Sextile · Illumina Experience">
+<meta property="og:url" content="https://illuminaexperince.com/cabaret">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://illuminaexperince.com/cabaret">
+<title>33° Alchemical Cabaret · The Grand Sextile · April 19 2026 · Illumina Experience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #c9a84c;
+  --gold-light: #f0d080;
+  --gold-dim: #9d7d3d;
+  --crimson: #8b1a1a;
+  --crimson-light: #c0392b;
+  --ink: #0a0806;
+  --parchment: #f5ead6;
+  --parchment-dark: #e8d5b0;
+  --velvet: #1a0f2e;
+  --smoke: rgba(201,168,76,0.08);
+  --electric: #4a9eff;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  background: var(--ink);
+  color: var(--parchment);
+  font-family: 'EB Garamond', Georgia, serif;
+  min-height: 100svh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) env(safe-area-inset-bottom, 0) env(safe-area-inset-left, 0);
+  cursor: crosshair;
+}
+
+/* ── CANVAS BACKGROUND ── */
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes pulse-glow {
+  0%,100% { text-shadow: 0 0 40px rgba(201,168,76,0.4); }
+  50% { text-shadow: 0 0 80px rgba(201,168,76,0.9), 0 0 120px rgba(201,168,76,0.3); }
+}
+
+.gate-btn {
+  margin-top: 1.5rem;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.4s;
+  width: 100%;
+}
+.gate-btn:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* ── MAIN APP ── */
+#app { display: block; position: relative; z-index: 1; }
+
+/* ── SECTION BASE ── */
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  position: relative;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gold-dim);
+  opacity: 0.55;
+}
+.divider span {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  color: var(--gold-light);
+  flex-shrink: 0;
+}
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  padding: 4rem 2rem;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.6em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.hero-degree {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(4rem, 12vw, 9rem);
+  color: var(--gold);
+  line-height: 0.9;
+  text-shadow: 0 0 60px rgba(201,168,76,0.4);
+  margin-bottom: 0.5rem;
+}
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1rem, 3vw, 1.8rem);
+  letter-spacing: 0.25em;
+  color: var(--parchment);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.hero-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(0.65rem, 1.5vw, 0.85rem);
+  letter-spacing: 0.5em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 3rem;
+}
+
+.hero-astro {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 3rem;
+}
+
+.astro-pill {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  padding: 0.5rem 1.2rem;
+  text-transform: uppercase;
+}
+
+.hero-date {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: rgba(245,234,214,0.88);
+  margin-bottom: 0.5rem;
+}
+
+.hero-location {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: var(--gold-dim);
+  animation: float-hint 2s ease-in-out infinite;
+  text-transform: uppercase;
+}
+@keyframes float-hint {
+  0%,100% { transform: translateX(-50%) translateY(0); opacity: 0.82; }
+  50% { transform: translateX(-50%) translateY(8px); opacity: 1; }
+}
+
+/* ── SECTION HEADINGS ── */
+.sect-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.6em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.sect-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.sect-body {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: rgba(245,234,214,0.94);
+  max-width: 680px;
+}
+
+/* ── BIRTH CHART ── */
+#chart-section {
+  border-top: 1px solid rgba(201,168,76,0.1);
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  background: linear-gradient(180deg, transparent 0%, rgba(26,15,46,0.4) 50%, transparent 100%);
+}
+
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 700px) { .chart-grid { grid-template-columns: 1fr; } }
+
+#natal-canvas {
+  width: 100%;
+  max-width: 380px;
+  display: block;
+  margin: 0 auto;
+}
+
+.planet-list {
+  list-style: none;
+}
+.planet-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(201,168,76,0.08);
+  font-size: 0.95rem;
+}
+.planet-list li .p-symbol {
+  font-size: 1.3rem;
+  width: 2rem;
+  text-align: center;
+  color: var(--gold);
+}
+.planet-list li .p-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  width: 5rem;
+}
+.planet-list li .p-pos {
+  color: var(--parchment);
+  flex: 1;
+}
+.planet-list li .p-hit {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  background: rgba(201,168,76,0.1);
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--gold-dim);
+  text-transform: uppercase;
+}
+
+/* ── ALIGNMENT TABLE ── */
+.align-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: 0.95rem;
+}
+.align-table th {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+  text-align: left;
+}
+.align-table td {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(201,168,76,0.06);
+  color: rgba(245,234,214,0.93);
+  vertical-align: top;
+}
+.align-table tr:hover td { background: rgba(201,168,76,0.04); }
+.align-table .planet-sym { font-size: 1.4rem; color: var(--gold); }
+.align-table .hit-badge {
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  border: 1px solid var(--gold-dim);
+  padding: 0.15rem 0.5rem;
+  display: inline-block;
+  margin-top: 0.3rem;
+  text-transform: uppercase;
+}
+.align-table .personal { color: var(--gold-light); font-weight: 500; }
+
+/* ── CODEX GAME ── */
+#codex-section {
+  background: linear-gradient(180deg, transparent, rgba(139,26,26,0.06), transparent);
+}
+
+.cauldron-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 0;
+}
+
+#cauldron-canvas {
+  display: block;
+}
+
+.progress-wrap {
+  margin-top: 1.5rem;
+  width: 100%;
+  max-width: 320px;
+  text-align: center;
+}
+.progress-track {
+  height: 4px;
+  background: rgba(201,168,76,0.15);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dim), var(--gold));
+  width: 0%;
+  transition: width 0.8s ease;
+}
+.progress-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+}
+
+.codex-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+.codex-card {
+  border: 1px solid var(--gold-dim);
+  padding: 2rem 1.5rem;
+  cursor: pointer;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+  background: rgba(201,168,76,0.02);
+}
+.codex-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(201,168,76,0.06);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s;
+}
+.codex-card:hover::before { transform: scaleX(1); }
+.codex-card:hover { border-color: var(--gold); }
+.codex-card:hover .card-symbol { transform: scale(1.2); }
+
+.card-symbol {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: 1rem;
+  transition: transform 0.3s;
+  line-height: 1;
+}
+.card-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  display: block;
+}
+.card-tagline {
+  font-style: italic;
+  font-size: 0.85rem;
+  color: rgba(245,234,214,0.82);
+  margin-bottom: 1rem;
+  display: block;
+}
+.card-examples {
+  font-size: 0.85rem;
+  color: rgba(245,234,214,0.86);
+  line-height: 1.7;
+}
+.card-examples strong {
+  color: rgba(245,234,214,0.98);
+  font-weight: 400;
+  font-style: italic;
+}
+
+.card-transmuted {
+  position: absolute;
+  inset: 0;
+  background: rgba(201,168,76,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  color: var(--gold);
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.codex-card.done .card-transmuted { opacity: 1; }
+
+/* ── ALTAR ── */
+.altar-wrap {
+  margin-top: 2rem;
+  border: 1px solid rgba(201,168,76,0.1);
+  padding: 2rem;
+  min-height: 120px;
+}
+
+.altar-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.5em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.altar-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  justify-content: center;
+}
+
+.altar-chip {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--gold-dim);
+  color: rgba(245,234,214,0.88);
+  text-transform: uppercase;
+  animation: chip-in 0.5s ease;
+}
+@keyframes chip-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── ORACLE ── */
+#oracle-section {
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+
+.oracle-shell {
+  border: 1px solid var(--gold-dim);
+  background: rgba(10,8,6,0.8);
+  margin-top: 2rem;
+}
+
+.oracle-header {
+  padding: 1.2rem 2rem;
+  border-bottom: 1px solid rgba(201,168,76,0.1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.oracle-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+  animation: pulse-glow 2s infinite;
+}
+.oracle-header-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+}
+
+#chat-log {
+  padding: 1.5rem 2rem;
+  min-height: 240px;
+  max-height: 400px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.msg {
+  display: flex;
+  gap: 1rem;
+  animation: chip-in 0.4s ease;
+}
+.msg.user { flex-direction: row-reverse; }
+
+.msg-avatar {
+  width: 2rem; height: 2rem;
+  border: 1px solid var(--gold-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+}
+
+.msg-bubble {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  padding: 1rem 1.5rem;
+  border: 1px solid rgba(201,168,76,0.1);
+  max-width: 80%;
+  font-style: italic;
+  color: rgba(245,234,214,0.85);
+}
+.msg.user .msg-bubble {
+  background: rgba(201,168,76,0.06);
+  border-color: var(--gold-dim);
+  font-style: normal;
+  color: var(--parchment);
+}
+
+.oracle-typing {
+  padding: 0.5rem 2rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  display: none;
+}
+.oracle-typing.visible { display: block; animation: flicker 1s infinite; }
+@keyframes flicker { 0%,100%{opacity:0.78} 50%{opacity:1} }
+
+.oracle-input-row {
+  border-top: 1px solid rgba(201,168,76,0.1);
+  display: flex;
+  gap: 0;
+}
+#oracle-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 1.2rem 2rem;
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--parchment);
+  outline: none;
+}
+#oracle-input::placeholder { color: rgba(245,234,214,0.52); }
+.oracle-send {
+  background: transparent;
+  border: none;
+  border-left: 1px solid rgba(201,168,76,0.1);
+  padding: 1rem 1.5rem;
+  color: var(--gold);
+  cursor: pointer;
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  transition: background 0.3s;
+}
+.oracle-send:hover { background: rgba(201,168,76,0.08); }
+
+.oracle-prompts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  border-top: 1px solid rgba(201,168,76,0.06);
+}
+.oracle-prompt-btn {
+  background: transparent;
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 0.4rem 0.8rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  color: rgba(245,234,214,0.82);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+.oracle-prompt-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ── RSVP ── */
+#rsvp-section {
+  border-top: 1px solid rgba(201,168,76,0.1);
+  text-align: center;
+}
+
+.rsvp-form {
+  max-width: 520px;
+  margin: 2.5rem auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 540px) { .field-row { grid-template-columns: 1fr; } }
+
+.rsvp-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--gold-dim);
+  padding: 0.9rem 0;
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  color: var(--parchment);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.3s;
+}
+.rsvp-input:focus { border-color: var(--gold); }
+.rsvp-input::placeholder { color: rgba(245,234,214,0.52); font-style: italic; }
+
+.rsvp-select {
+  background: rgba(10,8,6,0.9);
+  border: none;
+  border-bottom: 1px solid var(--gold-dim);
+  padding: 0.9rem 0;
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  color: rgba(245,234,214,0.92);
+  outline: none;
+  width: 100%;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+.rsvp-select:focus { border-color: var(--gold); }
+.rsvp-select option {
+  background: #14100c;
+  color: #f5ead6;
+}
+
+.rsvp-btn {
+  margin-top: 1rem;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.5em;
+  padding: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.rsvp-btn:hover { background: var(--gold); color: var(--ink); }
+
+/* ── SCHEDULE ── */
+.schedule-list {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.sched-item {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(201,168,76,0.06);
+  align-items: start;
+}
+.sched-time {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--gold-dim);
+  text-transform: uppercase;
+  padding-top: 0.15rem;
+}
+.sched-stage {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.sched-desc {
+  font-size: 0.95rem;
+  color: rgba(245,234,214,0.9);
+  line-height: 1.7;
+}
+
+/* ── PILLARS ── */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.pillar-card {
+  border: 1px solid rgba(201,168,76,0.15);
+  padding: 1.5rem;
+  transition: border-color 0.3s;
+}
+.pillar-card:hover { border-color: var(--gold-dim); }
+.pillar-num {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2rem;
+  color: rgba(201,168,76,0.48);
+  line-height: 1;
+  margin-bottom: 0.8rem;
+}
+.pillar-name {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.pillar-desc { font-size: 0.85rem; color: rgba(245,234,214,0.86); line-height: 1.6; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid rgba(201,168,76,0.1);
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.footer-sigil {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 2rem;
+  color: var(--gold-dim);
+  margin-bottom: 1rem;
+}
+.footer-text {
+  font-family: 'Cinzel', serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.4em;
+  color: rgba(245,234,214,0.9);
+  text-transform: uppercase;
+  line-height: 2.1;
+}
+.footer-maps {
+  display: inline-block;
+  margin: 0.4rem 0 0.15rem;
+  font-size: 0.55rem;
+  letter-spacing: 0.28em;
+  color: var(--gold);
+  text-decoration: none;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(201,168,76,0.45);
+}
+.footer-maps:hover {
+  color: #f5ead6;
+  border-bottom-color: var(--gold);
+}
+
+/* ── UTILITY ── */
+.gold-text { color: var(--gold); }
+.fade-in { animation: chip-in 0.8s ease both; }
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- ── APP ── -->
+<div id="app">
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-eyebrow">A private summons · 33rd degree ascension</div>
+    <div class="hero-degree">33°</div>
+    <div class="hero-title">Alchemical Cabaret</div>
+    <div class="hero-subtitle">The Grand Sextile Activation · Five planets at 4°</div>
+
+    <div class="hero-astro">
+      <span class="astro-pill">☽ Moon · 4° Libra</span>
+      <span class="astro-pill">♃ Jupiter · 4° Leo</span>
+      <span class="astro-pill">♅ Uranus · 4° Gemini</span>
+      <span class="astro-pill">♆ Neptune · 4° Aries</span>
+      <span class="astro-pill">♇ Pluto · 4° Aquarius</span>
+    </div>
+
+    <div class="hero-date">Sunday, April 19 · 2026 · 3:33pm → 3:33am · The Great Work</div>
+    <div class="hero-location">The Laboratory · North Miami · Dress as your highest alchemical self</div>
+
+    <div class="scroll-hint">↓ enter the grimoire</div>
+  </section>
+
+  <!-- BIRTH CHART -->
+  <section id="chart-section">
+    <div class="section">
+      <div class="sect-label">The cosmos conspired</div>
+      <div class="sect-title">Your natal chart meets the Grand Sextile</div>
+      <p class="sect-body">Born April 19, 1993 in Paris — Aries sun, Pisces moon, Aquarius rising. Three of the five alignment planets speak directly to your three natal placements simultaneously on this day.</p>
+
+      <div class="chart-grid" style="margin-top:2.5rem;">
+        <div>
+          <canvas id="natal-canvas" width="360" height="360"></canvas>
+        </div>
+        <div>
+          <ul class="planet-list">
+            <li>
+              <span class="p-symbol">☉</span>
+              <span class="p-name">Sun</span>
+              <span class="p-pos">Aries · your fire, your initiation</span>
+              <span class="p-hit">Neptune hits this</span>
+            </li>
+            <li>
+              <span class="p-symbol">☽</span>
+              <span class="p-name">Moon</span>
+              <span class="p-pos">Pisces · your emotional dissolve</span>
+              <span class="p-hit">Libra Moon trines</span>
+            </li>
+            <li>
+              <span class="p-symbol">AC</span>
+              <span class="p-name">Rising</span>
+              <span class="p-pos">Aquarius · your visible face</span>
+              <span class="p-hit">Pluto transforms</span>
+            </li>
+            <li>
+              <span class="p-symbol">♃</span>
+              <span class="p-name">Jupiter</span>
+              <span class="p-pos">4° Leo · abundance, glory, the gift</span>
+            </li>
+            <li>
+              <span class="p-symbol">♇</span>
+              <span class="p-name">Pluto</span>
+              <span class="p-pos">4° Aquarius · collective power shift</span>
+            </li>
+          </ul>
+          <div style="margin-top:1.5rem;padding:1.2rem;border:1px solid rgba(201,168,76,0.1);background:rgba(201,168,76,0.03);">
+            <div style="font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.3em;color:var(--gold-dim);text-transform:uppercase;margin-bottom:0.6rem;">The triangle</div>
+            <p style="font-size:0.9rem;color:rgba(245,234,214,0.9);line-height:1.7;font-style:italic;">Your twin sisters — Pisces sun, Aries moon — carry what you hold beneath: the same elements, inversely distributed. On April 19 the alignment activates all three of you simultaneously.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider" style="margin-top:3rem;"><span>☿</span></div>
+
+      <div class="sect-label" style="margin-top:2rem;">Power at 4°</div>
+      <div class="sect-title" style="font-size:1.4rem;">The five planets · their resonance with you</div>
+
+      <table class="align-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Planet</th>
+            <th>Position</th>
+            <th>Theme</th>
+            <th>Personal hit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="planet-sym">♆</td>
+            <td><span class="personal">Neptune</span></td>
+            <td>4° Aries</td>
+            <td>Identity dissolved, self reimagined</td>
+            <td><span class="hit-badge">Your sun sign</span></td>
+          </tr>
+          <tr>
+            <td class="planet-sym">♇</td>
+            <td><span class="personal">Pluto</span></td>
+            <td>4° Aquarius</td>
+            <td>People power, collective rebirth</td>
+            <td><span class="hit-badge">Your rising sign</span></td>
+          </tr>
+          <tr>
+            <td class="planet-sym">☽</td>
+            <td><span class="personal">Moon</span></td>
+            <td>4° Libra</td>
+            <td>Justice, balance, high-stakes partnership</td>
+            <td><span class="hit-badge">Trines your Pisces moon</span></td>
+          </tr>
+          <tr>
+            <td class="planet-sym">♃</td>
+            <td>Jupiter</td>
+            <td>4° Leo</td>
+            <td>Summer of Love · creativity · glory</td>
+            <td>The gift of the alignment</td>
+          </tr>
+          <tr>
+            <td class="planet-sym">♅</td>
+            <td>Uranus</td>
+            <td>4° Gemini</td>
+            <td>WTF moments · media · revolution</td>
+            <td>The wildcard · the lightning</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CODEX GAME -->
+  <section id="codex-section">
+    <div class="section">
+      <div class="sect-label">The Alchemist's Codex</div>
+      <div class="sect-title">You are not a guest — you are a co-alchemist</div>
+      <p class="sect-body">The Great Work requires your ingredient. Bring one offering from the Codex. Click to transmute it into the collective cauldron and watch the Magnum Opus advance.</p>
+
+      <div class="cauldron-wrap">
+        <canvas id="cauldron-canvas" width="220" height="220"></canvas>
+        <div class="progress-wrap">
+          <div class="progress-track"><div class="progress-fill" id="prog-fill"></div></div>
+          <div class="progress-label" id="prog-label">0% · The Great Work Awaits</div>
+        </div>
+      </div>
+
+      <div class="codex-cards" id="codex-cards">
+
+        <div class="codex-card" data-type="ELIXIR" onclick="transmute(this)">
+          <span class="card-symbol">🜄</span>
+          <span class="card-name">Elixirs · The Liquid Stone</span>
+          <span class="card-tagline">Spirits, tonics & sacred drinks</span>
+          <div class="card-examples">
+            <strong>Alcoholic:</strong> mezcal, wine, rum, absinthe, mead, craft cocktails<br>
+            <strong>Healthy:</strong> golden milk, adaptogenic tonics, cacao elixir, kombucha, moon water, fresh juice<br>
+            <strong>Pro tip:</strong> Label it with a handwritten intention. "Taurus Grounding Tonic." "Uranus Lightning Shot."
+          </div>
+          <div class="card-transmuted">✦ Transmuted into the Work ✦</div>
+        </div>
+
+        <div class="codex-card" data-type="POTION" onclick="transmute(this)">
+          <span class="card-symbol">⚗</span>
+          <span class="card-name">Potions · Bottled Magic</span>
+          <span class="card-tagline">Small-batch concentrated power</span>
+          <div class="card-examples">
+            <strong>Sweet:</strong> raw honey, spiced syrup, chocolate truffles, caramel, halva<br>
+            <strong>Savoury:</strong> hot sauce, pickles, chutney, fermented things, dips<br>
+            <strong>Ritual:</strong> anointing oil, perfume, room spray, herbal tincture in a pretty jar
+          </div>
+          <div class="card-transmuted">✦ Transmuted into the Work ✦</div>
+        </div>
+
+        <div class="codex-card" data-type="MAGIC" onclick="transmute(this)">
+          <span class="card-symbol">✦</span>
+          <span class="card-name">Magic · The Invisible Ingredient</span>
+          <span class="card-tagline">Art, performance & living energy</span>
+          <div class="card-examples">
+            <strong>Artists:</strong> bring a small painting, drawing, print, or found object as an altar piece<br>
+            <strong>Musicians &amp; DJs:</strong> offer a 20-min set, live loop, or sonic ritual<br>
+            <strong>Performers:</strong> song, poem, dance, burlesque, spoken word, fire poi, illusion — 5–7 min max<br>
+            <strong>Writers:</strong> a sigil, poem, or written intention to burn at midnight
+          </div>
+          <div class="card-transmuted">✦ Transmuted into the Work ✦</div>
+        </div>
+
+        <div class="codex-card" data-type="MINERAL" onclick="transmute(this)">
+          <span class="card-symbol">🜔</span>
+          <span class="card-name">Minerals · The Earth Element</span>
+          <span class="card-tagline">Grounding the fire into form</span>
+          <div class="card-examples">
+            <strong>Crystals &amp; stones:</strong> any — even a pebble you love<br>
+            <strong>Edible earth:</strong> sea salt, dried herbs, spices, edible flowers, cacao nibs<br>
+            <strong>Food offerings:</strong> fresh fruit, cheese, bread, snack platters — anything nourishing<br>
+            <strong>Shiny things:</strong> gold leaf, glitter, feathers, anything that catches candlelight
+          </div>
+          <div class="card-transmuted">✦ Transmuted into the Work ✦</div>
+        </div>
+
+        <div class="codex-card" data-type="ASTRAL" onclick="transmute(this)">
+          <span class="card-symbol">☽</span>
+          <span class="card-name">Astral Offerings · The Celestial Ingredient</span>
+          <span class="card-tagline">Tied to the sky we stand under</span>
+          <div class="card-examples">
+            <strong>Sun sign element:</strong> Fire = red candle/spice · Earth = crystal/plant · Air = feather/incense · Water = shell/moon water<br>
+            <strong>Uranus (4° Gemini):</strong> anything electric blue, metallic, or revolutionary<br>
+            <strong>Jupiter (4° Leo):</strong> gold objects, sun imagery, creative works<br>
+            <strong>Written:</strong> one sentence: what you ignite, what you liberate, what you embody
+          </div>
+          <div class="card-transmuted">✦ Transmuted into the Work ✦</div>
+        </div>
+
+      </div>
+
+      <!-- ALTAR -->
+      <div class="altar-wrap">
+        <div class="altar-title">⬦ The Collective Altar · Living Offerings ⬦</div>
+        <div class="altar-chips" id="altar-chips">
+          <div class="altar-chip">Seraphina V. · Uranus lightning tincture</div>
+          <div class="altar-chip">Elias · Violet flame elixir</div>
+          <div class="altar-chip">Brother of the Ram · Aries fire crystal</div>
+        </div>
+      </div>
+
+      <!-- ADD YOUR OFFERING -->
+      <div style="margin-top:3rem;">
+        <div class="sect-label">Pledge your offering</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr auto;gap:1rem;align-items:end;max-width:680px;">
+          <input class="rsvp-input" id="altar-name" placeholder="Your name or title">
+          <input class="rsvp-input" id="altar-offer" placeholder="What are you bringing?">
+          <button class="gate-btn" style="padding:0.85rem 1.5rem;width:auto;white-space:nowrap;" onclick="addToAltar()">Send to cauldron</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORACLE -->
+  <section id="oracle-section">
+    <div class="section">
+      <div class="sect-label">The Alchemical Oracle · Powered by Claude</div>
+      <div class="sect-title">Ask the 33rd Degree</div>
+      <p class="sect-body">The Oracle speaks in the language of the Great Work — astrology, alchemy, the Magnum Opus. Ask about your birth chart, the alignment, the night's ritual, or your own unfolding.</p>
+
+      <div class="oracle-shell" style="margin-top:2rem;">
+        <div class="oracle-header">
+          <div class="oracle-dot"></div>
+          <div class="oracle-header-title">Alchemical Oracle · 33rd Degree · Grand Sextile 2026</div>
+        </div>
+
+        <div id="chat-log">
+          <div class="msg ai">
+            <div class="msg-avatar">⚗</div>
+            <div class="msg-bubble">The Work begins. Five planets lock at 4° — a cosmic click heard once in a generation. You stand at the Rubedo, the final reddening, where the Philosopher's Stone is realized not as an object but as the transformed self. What do you wish to know, co-alchemist?</div>
+          </div>
+        </div>
+
+        <div class="oracle-typing" id="oracle-typing">The Oracle contemplates...</div>
+
+        <div class="oracle-input-row">
+          <input id="oracle-input" type="text" placeholder="Ask the Oracle..." onkeypress="if(event.key==='Enter') sendOracle()">
+          <button class="oracle-send" onclick="sendOracle()">Ask</button>
+        </div>
+
+        <div class="oracle-prompts">
+          <button class="oracle-prompt-btn" onclick="setPrompt('What does the Grand Sextile mean for my Aries sun on April 19?')">My Aries sun & the alignment</button>
+          <button class="oracle-prompt-btn" onclick="setPrompt('What rituals should I perform at midnight during the Rubedo?')">Midnight ritual guidance</button>
+          <button class="oracle-prompt-btn" onclick="setPrompt('How does Pluto in Aquarius transform my Aquarius rising?')">Pluto on my rising</button>
+          <button class="oracle-prompt-btn" onclick="setPrompt('What is the alchemical meaning of the 33rd degree?')">The 33rd degree</button>
+          <button class="oracle-prompt-btn" onclick="setPrompt('What should I bring as my offering to the Alchemical Cabaret?')">Choosing my offering</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section style="border-top:1px solid rgba(201,168,76,0.1);">
+    <div class="section">
+      <div class="sect-label">The night's arc</div>
+      <div class="sect-title">The Magnum Opus unfolds in four stages</div>
+
+      <div class="schedule-list">
+        <div class="sched-item">
+          <div class="sched-time">2:00 pm</div>
+          <div>
+            <div class="sched-stage">Nigredo · The Blackening</div>
+            <div class="sched-desc">Arrival through the veil. Each guest crosses a threshold and whispers what they are leaving behind. Welcome elixirs at the Prima Materia station. The space is dark, the air heavy. Offerings placed on the central altar.</div>
+          </div>
+        </div>
+        <div class="sched-item">
+          <div class="sched-time">2–5 pm</div>
+          <div>
+            <div class="sched-stage">Albedo · The Purification</div>
+            <div class="sched-desc">Pool, hot tub, yoga, ping-pong, lounging. The Mercury Bath. Performances emerge organically in the cabana zones. Astral speed dating — share your sign, what you're transmuting. Collective altar fills with offerings.</div>
+          </div>
+        </div>
+        <div class="sched-item">
+          <div class="sched-time">5–6:30 pm</div>
+          <div>
+            <div class="sched-stage">Citrinitas · The Solar Hour</div>
+            <div class="sched-desc">Golden hour — lightning strikes. The Uranus Lightning Invocation. Circle gathers. Three forces called: Aries Fire, Uranus Liberation, Taurus Embodiment. Written intentions burned in the cauldron. Your twins light the central flame. The crowd is the transformer.</div>
+          </div>
+        </div>
+        <div class="sched-item">
+          <div class="sched-time">6:30–8 pm</div>
+          <div>
+            <div class="sched-stage">Community Vision · The Ecosystem Born</div>
+            <div class="sched-desc">The 5 Pillars revealed as Acts in the Grand Show. Breakout cabanas with gold tablecloths. Guests claim roles and sign the Transmutation Wall. The house becomes the ecosystem in real time.</div>
+          </div>
+        </div>
+        <div class="sched-item">
+          <div class="sched-time">8 pm → late</div>
+          <div>
+            <div class="sched-stage">Rubedo · The Gold</div>
+            <div class="sched-desc">DJ takeover. The Banquet of the Stone. Live performances. Fire elements. Red lighting floods the space. The Philosopher's Stone is realized — not as an object but as the transformed people in this room.</div>
+          </div>
+        </div>
+        <div class="sched-item">
+          <div class="sched-time">Midnight</div>
+          <div>
+            <div class="sched-stage">The 33° Toast</div>
+            <div class="sched-desc">33 candles. The adept speaks. What 33 years have built, what is completed, what is beginning. The crowd becomes the altar. So Mote It Be.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section style="border-top:1px solid rgba(201,168,76,0.1);background:linear-gradient(180deg,transparent,rgba(26,15,46,0.3),transparent);">
+    <div class="section">
+      <div class="sect-label">The ecosystem launch</div>
+      <div class="sect-title">Five Pillars of the New World</div>
+      <p class="sect-body">This night is also the official activation of the creator community. High-impact entrepreneurs, artists, builders. The house becomes the template.</p>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-num">I</div>
+          <div class="pillar-name">Daily Sync</div>
+          <div class="pillar-desc">Morning activations at 8am — breathwork, yoga, or movement. Everyone synced, everyone activated.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">II</div>
+          <div class="pillar-name">Shared Abundance</div>
+          <div class="pillar-desc">Weekly community dinner. Potluck calendar. The table as ritual. Contribution over consumption.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">III</div>
+          <div class="pillar-name">Creation Hubs</div>
+          <div class="pillar-desc">Deep work blocks, weekly mastermind circles, skill shares. The co-working space as laboratory.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">IV</div>
+          <div class="pillar-name">Contribution Economy</div>
+          <div class="pillar-desc">Rotating chore pods. Give-one-get-one skill board. Zero budget, maximum output.</div>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">V</div>
+          <div class="pillar-name">Energetic Stewardship</div>
+          <div class="pillar-desc">Moon rituals, quarterly vision retreats, collective intention setting. The house as sacred space.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp-section" style="border-top:1px solid rgba(201,168,76,0.1);">
+    <div class="section">
+      <div class="sect-label">Claim your place in the Great Work</div>
+      <div class="sect-title">Enter the Laboratory</div>
+      <p class="sect-body" style="margin:0 auto;">The portal opens only for the co-alchemists. Dress as your highest theatrical self — gold, feathers, velvet, sigils, lab coat over corset, top hat with occult markings. Whatever says: I transmuted.</p>
+
+      <div class="rsvp-form" id="rsvp-form">
+        <div class="field-row">
+          <input class="rsvp-input" id="r-name" placeholder="Your name or title">
+          <input class="rsvp-input" id="r-sign" placeholder="Sun sign">
+        </div>
+        <div class="field-row">
+          <input class="rsvp-input" id="r-offering" placeholder="What offering are you bringing?">
+          <select class="rsvp-select" id="r-type">
+            <option value="" disabled selected>Category</option>
+            <option value="Elixir">Elixir · liquid stone</option>
+            <option value="Potion">Potion · bottled magic</option>
+            <option value="Magic">Magic · art / performance / music</option>
+            <option value="Mineral">Mineral · earth element</option>
+            <option value="Astral">Astral · celestial offering</option>
+          </select>
+        </div>
+        <input class="rsvp-input" id="r-message" placeholder="A message for the altar (optional)">
+        <button class="rsvp-btn" onclick="submitRSVP()">So Mote It Be · I am in</button>
+        <div id="rsvp-confirm" class="hidden" style="font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.3em;color:var(--gold);text-transform:uppercase;text-align:center;padding:1rem;border:1px solid var(--gold-dim);">
+          ✦ Your offering has been received by the Laboratory ✦
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-sigil">☽ ⊕ ☉</div>
+    <div class="footer-text">Venue · 12746 NE 4th Ave · North Miami, FL<br><a class="footer-maps" href="https://www.google.com/maps/search/?api=1&amp;query=12746%20NE%204th%20Ave%2C%20North%20Miami%2C%20FL" target="_blank" rel="noopener noreferrer">Google Maps</a><br>So Mote It Be · 33° Alchemical Cabaret · The Grand Sextile · April 19 MMXXVI · The Night Everything Unfolds</div>
+  </footer>
+
+</div><!-- /app -->
+
+<script>
+/** On illumina*.com use same-origin Netlify function (Anthropic key in Netlify); else Trinity API for local/dev. */
+var ILLUMINA_ORACLE_URL = (function () {
+  var h = (window.location.hostname || '').toLowerCase();
+  if (h === 'illuminaexperince.com' || h === 'www.illuminaexperince.com' || h === 'illuminaexperience.com' || h === 'www.illuminaexperience.com') {
+    return window.location.origin + '/.netlify/functions/illumina-messages';
+  }
+  return 'https://trinity-consortium.com/api/experience/illumina-messages';
+})();
+function illuminaOracleFetch(payload) {
+  return fetch(ILLUMINA_ORACLE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+}
+
+/* ── BACKGROUND CANVAS ── */
+const bgC = document.getElementById('bg-canvas');
+const bgX = bgC.getContext('2d');
+let bgW, bgH;
+
+function resizeBg() {
+  bgW = bgC.width = window.innerWidth;
+  bgH = bgC.height = window.innerHeight;
+}
+resizeBg();
+window.addEventListener('resize', resizeBg);
+
+const stars = Array.from({length:120}, () => ({
+  x: Math.random(), y: Math.random(),
+  r: Math.random()*1.5+0.3,
+  a: Math.random(), da: (Math.random()-0.5)*0.005
+}));
+
+function drawBg() {
+  bgX.clearRect(0,0,bgW,bgH);
+  // Stars
+  stars.forEach(s => {
+    s.a = Math.max(0.1, Math.min(1, s.a + s.da));
+    if (s.a <= 0.1 || s.a >= 1) s.da *= -1;
+    bgX.beginPath();
+    bgX.arc(s.x*bgW, s.y*bgH, s.r, 0, Math.PI*2);
+    bgX.fillStyle = `rgba(201,168,76,${s.a*0.5})`;
+    bgX.fill();
+  });
+  // Occasional lightning
+  if (Math.random() > 0.995) {
+    bgX.beginPath();
+    let lx = Math.random()*bgW, ly = 0;
+    bgX.moveTo(lx, ly);
+    for (let i=0;i<6;i++) { lx += (Math.random()-0.5)*120; ly += bgH/6; bgX.lineTo(lx,ly); }
+    bgX.strokeStyle = 'rgba(74,158,255,0.15)';
+    bgX.lineWidth = 1;
+    bgX.stroke();
+  }
+  requestAnimationFrame(drawBg);
+}
+drawBg();
+
+/* ── NATAL CHART CANVAS ── */
+function drawNatalChart() {
+  const c = document.getElementById('natal-canvas');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  const W = 360, H = 360, cx = W/2, cy = H/2, R = 150, r2 = 105, r3 = 70;
+
+  ctx.clearRect(0,0,W,H);
+
+  // Outer ring
+  ctx.beginPath(); ctx.arc(cx,cy,R,0,Math.PI*2);
+  ctx.strokeStyle = 'rgba(201,168,76,0.25)'; ctx.lineWidth = 1; ctx.stroke();
+
+  // Inner rings
+  [r2, r3, 35].forEach(r => {
+    ctx.beginPath(); ctx.arc(cx,cy,r,0,Math.PI*2);
+    ctx.strokeStyle = 'rgba(201,168,76,0.12)'; ctx.lineWidth = 0.5; ctx.stroke();
+  });
+
+  // 12 sign divisions
+  for (let i=0;i<12;i++) {
+    const a = (i*30 - 90) * Math.PI/180;
+    ctx.beginPath();
+    ctx.moveTo(cx + r3*Math.cos(a), cy + r3*Math.sin(a));
+    ctx.lineTo(cx + R*Math.cos(a), cy + R*Math.sin(a));
+    ctx.strokeStyle = 'rgba(201,168,76,0.15)'; ctx.lineWidth = 0.5; ctx.stroke();
+  }
+
+  // Zodiac symbols
+  const signs = ['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'];
+  signs.forEach((s,i) => {
+    const a = ((i*30 + 15) - 90) * Math.PI/180;
+    const sx = cx + (R-14)*Math.cos(a);
+    const sy = cy + (R-14)*Math.sin(a);
+    ctx.font = '11px serif';
+    ctx.fillStyle = 'rgba(201,168,76,0.4)';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(s, sx, sy);
+  });
+
+  // Planets: Sun=Aries(0°), Moon=Pisces(330°+10°), Rising=Aquarius(300°+15°)
+  // Grand Sextile planets
+  const planets = [
+    { sym:'☉', deg:19, col:'#f0d080', label:'Sun · Aries', natal:true },
+    { sym:'☽', deg:340, col:'#b0c8ff', label:'Moon · Pisces', natal:true },
+    { sym:'AC', deg:315, col:'#9f7fff', label:'Rising · Aquarius', natal:true, small:true },
+    { sym:'♆', deg:19, col:'#ff9f7f', label:'Neptune 4°Aries', r:r2 },
+    { sym:'♇', deg:315, col:'#7fff9f', label:'Pluto 4°Aquarius', r:r2 },
+    { sym:'☽', deg:195, col:'#c0a0ff', label:'Moon 4°Libra', r:r2 },
+    { sym:'♃', deg:135, col:'#ffc040', label:'Jupiter 4°Leo', r:r2 },
+    { sym:'♅', deg:75, col:'#40c0ff', label:'Uranus 4°Gemini', r:r2 },
+  ];
+
+  planets.forEach(p => {
+    const a = (p.deg - 90) * Math.PI/180;
+    const pr = p.r || r3 - 10;
+    const px = cx + pr*Math.cos(a);
+    const py = cy + pr*Math.sin(a);
+
+    if (p.natal) {
+      // Natal planets get a small glow circle
+      ctx.beginPath(); ctx.arc(px,py,10,0,Math.PI*2);
+      ctx.fillStyle = p.col+'30'; ctx.fill();
+      ctx.beginPath(); ctx.arc(px,py,10,0,Math.PI*2);
+      ctx.strokeStyle = p.col+'80'; ctx.lineWidth=1; ctx.stroke();
+    }
+
+    ctx.font = p.small ? '9px serif' : '12px serif';
+    ctx.fillStyle = p.col;
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    ctx.fillText(p.sym, px, py);
+  });
+
+  // Draw alignment lines between grand sextile planets
+  const sextile = [
+    {deg:19, col:'#ff9f7f'},
+    {deg:75, col:'#40c0ff'},
+    {deg:135, col:'#ffc040'},
+    {deg:195, col:'#c0a0ff'},
+    {deg:315, col:'#7fff9f'},
+  ];
+  for (let i=0;i<sextile.length;i++) {
+    for (let j=i+1;j<sextile.length;j++) {
+      const a1 = (sextile[i].deg - 90)*Math.PI/180;
+      const a2 = (sextile[j].deg - 90)*Math.PI/180;
+      ctx.beginPath();
+      ctx.moveTo(cx + r2*Math.cos(a1), cy + r2*Math.sin(a1));
+      ctx.lineTo(cx + r2*Math.cos(a2), cy + r2*Math.sin(a2));
+      ctx.strokeStyle = 'rgba(201,168,76,0.12)'; ctx.lineWidth=0.5; ctx.stroke();
+    }
+  }
+
+  // Center symbol
+  ctx.font = '18px serif';
+  ctx.fillStyle = 'rgba(201,168,76,0.5)';
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText('4°', cx, cy-6);
+  ctx.font = '8px Cinzel, serif';
+  ctx.fillStyle = 'rgba(201,168,76,0.3)';
+  ctx.fillText('GRAND', cx, cy+8);
+  ctx.fillText('SEXTILE', cx, cy+18);
+}
+
+/* ── CAULDRON CANVAS ── */
+let cauldronProgress = 0;
+let particles = [];
+
+function drawCauldron() {
+  const c = document.getElementById('cauldron-canvas');
+  if (!c) return;
+  const ctx = c.getContext('2d');
+  const W=220, H=220, cx=W/2, cy=H/2, R=80;
+
+  ctx.clearRect(0,0,W,H);
+
+  // Cauldron body
+  ctx.beginPath();
+  ctx.arc(cx, cy+20, R, 0, Math.PI*2);
+  ctx.fillStyle = '#1a0f0a';
+  ctx.fill();
+  ctx.strokeStyle = `rgba(201,168,76,${0.3 + cauldronProgress/200})`;
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Glow based on progress
+  if (cauldronProgress > 0) {
+    const grad = ctx.createRadialGradient(cx, cy+20, 10, cx, cy+20, R);
+    grad.addColorStop(0, `rgba(201,168,76,${cauldronProgress/500})`);
+    grad.addColorStop(1, 'transparent');
+    ctx.beginPath(); ctx.arc(cx, cy+20, R, 0, Math.PI*2);
+    ctx.fillStyle = grad; ctx.fill();
+  }
+
+  // Particles
+  particles = particles.filter(p => p.life > 0);
+  particles.forEach(p => {
+    p.x += p.vx; p.y += p.vy; p.life -= 2;
+    ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+    ctx.fillStyle = `rgba(${p.col},${p.life/100})`;
+    ctx.fill();
+  });
+
+  // Fire animation
+  const t = Date.now()/1000;
+  for (let i=0; i<3; i++) {
+    const fx = cx + (i-1)*25 + Math.sin(t*2+i)*8;
+    const fh = 20 + cauldronProgress/3 + Math.sin(t*3+i)*8;
+    ctx.beginPath();
+    ctx.moveTo(fx-10, cy-20);
+    ctx.quadraticCurveTo(fx + Math.sin(t+i)*15, cy-20-fh/2, fx, cy-20-fh);
+    ctx.quadraticCurveTo(fx - Math.sin(t+i)*15, cy-20-fh/2, fx+10, cy-20);
+    ctx.fillStyle = i===1 ? `rgba(201,168,76,${0.4+cauldronProgress/200})` : `rgba(139,26,26,${0.3+cauldronProgress/250})`;
+    ctx.fill();
+  }
+
+  // Alchemical symbol in center
+  ctx.font = '22px serif';
+  ctx.fillStyle = `rgba(201,168,76,${0.2 + cauldronProgress/150})`;
+  ctx.textAlign='center'; ctx.textBaseline='middle';
+  ctx.fillText('⚗', cx, cy+20);
+
+  requestAnimationFrame(drawCauldron);
+}
+
+
+/* ── RETURNING GUEST (this browser) ── */
+var ILLUMINA_PROFILE_KEY = 'illumina_cabaret_profile_v1';
+
+function loadCabaretProfileIntoInputs() {
+  try {
+    var raw = localStorage.getItem(ILLUMINA_PROFILE_KEY);
+    if (!raw) return;
+    var p = JSON.parse(raw);
+    function setVal(id, v) {
+      var el = document.getElementById(id);
+      if (el && typeof v === 'string') el.value = v;
+    }
+    setVal('altar-name', p.altarName);
+    setVal('altar-offer', p.altarOffer);
+    setVal('r-name', p.rName);
+    setVal('r-sign', p.rSign);
+    setVal('r-offering', p.rOffering);
+    setVal('r-message', p.rMessage);
+    var sel = document.getElementById('r-type');
+    if (sel && typeof p.rType === 'string') sel.value = p.rType;
+  } catch (e) {}
+}
+
+function saveCabaretProfileFromInputs() {
+  try {
+    function gv(id) {
+      var el = document.getElementById(id);
+      return el ? String(el.value || '') : '';
+    }
+    var p = {
+      altarName: gv('altar-name'),
+      altarOffer: gv('altar-offer'),
+      rName: gv('r-name'),
+      rSign: gv('r-sign'),
+      rOffering: gv('r-offering'),
+      rMessage: gv('r-message'),
+      rType: (document.getElementById('r-type') || {}).value || '',
+    };
+    localStorage.setItem(ILLUMINA_PROFILE_KEY, JSON.stringify(p));
+  } catch (e) {}
+}
+
+function initCabaretApp() {
+  var app = document.getElementById('app');
+  if (app) app.style.display = 'block';
+  setTimeout(function () {
+    try {
+      drawNatalChart();
+      drawCauldron();
+      loadAltar();
+    } catch (e) {}
+    loadCabaretProfileIntoInputs();
+  }, 50);
+}
+
+/* ── CODEX GAME ── */
+let transmuteCount = 0;
+const totalCards = 5;
+
+function transmute(card) {
+  if (card.classList.contains('done')) return;
+  card.classList.add('done');
+  transmuteCount++;
+
+  // Spawn particles
+  for (let i=0;i<20;i++) {
+    particles.push({
+      x: 110, y: 110, vx:(Math.random()-0.5)*4, vy:-Math.random()*4-1,
+      r: Math.random()*3+1, life:100,
+      col: Math.random()>0.5 ? '201,168,76' : '240,208,128'
+    });
+  }
+
+  // Update progress
+  cauldronProgress = transmuteCount / totalCards * 100;
+  const pct = Math.round(cauldronProgress);
+  document.getElementById('prog-fill').style.width = pct+'%';
+  const labels = ['0%','20% · Nigredo begins','40% · Albedo purifying','60% · Citrinitas rising','80% · Rubedo nearing','100% · The Stone Realized ✦'];
+  document.getElementById('prog-label').textContent = labels[transmuteCount] || labels[0];
+
+  // Add to altar
+  const type = card.getAttribute('data-type');
+  const chip = document.createElement('div');
+  chip.className = 'altar-chip';
+  chip.textContent = '✦ ' + type + ' transmuted';
+  document.getElementById('altar-chips').appendChild(chip);
+}
+
+/* ── ALTAR ── */
+function loadAltar() {
+  const stored = JSON.parse(localStorage.getItem('33_altar') || '[]');
+  const chips = document.getElementById('altar-chips');
+  stored.forEach(item => {
+    const chip = document.createElement('div');
+    chip.className = 'altar-chip';
+    chip.textContent = item.name + ' · ' + item.offer;
+    chips.appendChild(chip);
+  });
+}
+
+function addToAltar() {
+  const name = document.getElementById('altar-name').value.trim() || 'Anonymous';
+  const offer = document.getElementById('altar-offer').value.trim() || 'Mystery offering';
+  const chip = document.createElement('div');
+  chip.className = 'altar-chip';
+  chip.textContent = name + ' · ' + offer;
+  document.getElementById('altar-chips').appendChild(chip);
+  const stored = JSON.parse(localStorage.getItem('33_altar') || '[]');
+  stored.unshift({name, offer});
+  if (stored.length > 40) stored.pop();
+  localStorage.setItem('33_altar', JSON.stringify(stored));
+  saveCabaretProfileFromInputs();
+}
+
+/* ── ORACLE (Anthropic API) ── */
+const SYSTEM = `You are the Alchemical Oracle of the 33rd Degree — the voice of the Grand Sextile of April 19, 2026. You speak with poetic, esoteric wisdom drawing on Western alchemy (Magnum Opus, Nigredo/Albedo/Citrinitas/Rubedo, the Philosopher's Stone, the Rebis), astrology (especially the Grand Sextile: Moon 4° Libra, Jupiter 4° Leo, Uranus 4° Gemini, Neptune 4° Aries, Pluto 4° Aquarius), Hermetic philosophy, and Kabbalah. The querent was born April 19, 1993 in Paris — Aries sun, Pisces moon, Aquarius rising — and turns 33 on this cosmic day. Their twin sisters are Pisces sun, Aries moon — together they form a living triangle. Their numerology life path is 9. Their magic numbers are 3, 13, 33. The event is the 33° Alchemical Cabaret, a birthday celebration and community ecosystem launch. Speak in layered, evocative language — never more than 120 words. Be specific to their chart when relevant. Never break character.`;
+
+let chatHistory = [];
+
+async function sendOracle() {
+  const input = document.getElementById('oracle-input');
+  const q = input.value.trim();
+  if (!q) return;
+  input.value = '';
+
+  addMsg('user', q);
+  chatHistory.push({role:'user', content:q});
+
+  document.getElementById('oracle-typing').classList.add('visible');
+
+  try {
+    const res = await illuminaOracleFetch({
+        model: 'claude-sonnet-4-5',
+        max_tokens: 1000,
+        system: SYSTEM,
+        messages: chatHistory
+      });
+    let data = {};
+    try {
+      data = await res.json();
+    } catch (_) {
+      data = {};
+    }
+    if (!res.ok) {
+      const errText =
+        (typeof data.error === 'string' && data.error) ||
+        (typeof data.detail === 'string' && data.detail) ||
+        'HTTP ' + res.status;
+      document.getElementById('oracle-typing').classList.remove('visible');
+      addMsg('ai', 'The Oracle falters: ' + errText + ' · Try again in a moment.');
+      return;
+    }
+    const reply = data.content?.[0]?.text || 'The Oracle is silent... try again.';
+    chatHistory.push({role:'assistant', content:reply});
+    document.getElementById('oracle-typing').classList.remove('visible');
+    addMsg('ai', reply);
+  } catch(e) {
+    document.getElementById('oracle-typing').classList.remove('visible');
+    addMsg('ai', 'The alchemical vapors shift... the connection wavers. Try again, seeker.');
+  }
+}
+
+function addMsg(role, text) {
+  const log = document.getElementById('chat-log');
+  const div = document.createElement('div');
+  div.className = 'msg ' + role;
+  div.innerHTML = `
+    <div class="msg-avatar">${role==='ai'?'⚗':'☽'}</div>
+    <div class="msg-bubble">${text}</div>
+  `;
+  log.appendChild(div);
+  log.scrollTop = log.scrollHeight;
+}
+
+function setPrompt(text) {
+  document.getElementById('oracle-input').value = text;
+  document.getElementById('oracle-input').focus();
+}
+
+/* ── RSVP ── */
+function submitRSVP() {
+  const name = document.getElementById('r-name').value.trim();
+  const sign = document.getElementById('r-sign').value.trim();
+  const offering = document.getElementById('r-offering').value.trim();
+  const type = document.getElementById('r-type').value;
+  if (!name) { alert('Speak your name, alchemist.'); return; }
+
+  // Add to altar
+  const chip = document.createElement('div');
+  chip.className = 'altar-chip';
+  chip.textContent = (name + (sign?' · '+sign:'') + ' · ' + (type||'offering'));
+  document.getElementById('altar-chips').appendChild(chip);
+
+  // Store
+  const stored = JSON.parse(localStorage.getItem('33_altar') || '[]');
+  stored.unshift({name: name+(sign?' ('+sign+')':''), offer: offering || type || 'mystery offering'});
+  localStorage.setItem('33_altar', JSON.stringify(stored));
+
+  saveCabaretProfileFromInputs();
+  document.getElementById('rsvp-confirm').classList.remove('hidden');
+  setTimeout(() => document.getElementById('rsvp-confirm').classList.add('hidden'), 4000);
+}
+initCabaretApp();
+</script>
+</body>
+</html>
